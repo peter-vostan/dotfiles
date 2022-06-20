@@ -1,0 +1,17 @@
+- defaults:
+    link:
+      relink: true # Removes the old target if it's a symlink
+
+- clean: # Remove deadlinks in these directories (force: false by default so only those deadlinks pointing into this directory)
+    ~/:
+
+- link:
+    ~/.aliases: terminal/aliases
+    ~/.functions: terminal/functions
+    ~/.zshrc: terminal/zshrc
+    ~/Library/Application Support/Code/user/settings.json: vscode/settings.json
+
+- create: []
+
+- shell: # Shell commands to be run by the installer
+  - [git submodule update --init --recursive, Installing submodules]

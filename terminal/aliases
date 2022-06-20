@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+# Easier navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# ls aliases
+alias l="ls -lF --color"                              # List all files colorized in long format
+alias la="ls -lAF --color"                            # List all files colorized in long format, excluding . and ..
+alias lsd="ls -lF --color | grep --color=never '^d'"  # List only directories
+alias ls="command ls --color"                         # Always use color output for `ls`
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Intuitive map function
+# For example, to list all directories that contain a certain file:
+# find . -name .gitattributes | map dirname
+alias map="xargs -n1"

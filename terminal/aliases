@@ -7,15 +7,17 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # ls aliases
-alias l="ls -lF --color"                              # List all files colorized in long format
-alias la="ls -lAF --color"                            # List all files colorized in long format, excluding . and ..
-alias lsd="ls -lF --color | grep --color=never '^d'"  # List only directories
+alias l="ls -lFh --color"                              # List all files colorized in long format
+alias la="ls -lAFh --color"                            # List all files colorized in long format, excluding . and ..
+alias lsd="ls -lFh --color | grep --color=never '^d'"  # List only directories
 alias ls="command ls --color"                         # Always use color output for `ls`
+
+# Run git status on all of the subdirectories in the dev directory
+alias gsdev="find ~/dev -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Intuitive map function

@@ -1,8 +1,0 @@
-bitwarden
-visual-studio-code
-google-chrome
-diff-so-fancy
-rectangle
-rust
-nvm
-drawio

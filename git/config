@@ -1,0 +1,46 @@
+[core]
+	autocrlf = false
+	editor = "code --wait"
+	eol = "lf"
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[diff]
+	tool = "vscode"
+
+[difftool "vscode"]
+	cmd = "code --wait --diff $LOCAL $REMOTE"
+
+[init]
+	defaultBranch = "main"
+
+[merge]
+	tool = "vscode"
+
+[pull]
+	rebase = true
+
+[push]
+	default = "current"
+
+[rebase]
+	autoStash = true
+
+[user]
+	name = Peter Vostan
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

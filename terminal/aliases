@@ -18,7 +18,8 @@ alias gsdev="find ~/dev -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} &&
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias publicip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ifconfig | grep -E \"([0-9]{1,3}\.){3}[0-9]{1,3}\" | grep -v 127.0.0.1 | awk '{ print }' | cut -f2 -d:"
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:

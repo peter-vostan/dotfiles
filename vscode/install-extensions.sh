@@ -17,4 +17,4 @@ code --install-extension arrterian.nix-env-selector             # Nix shell supp
 code --install-extension jnoortheen.nix-ide                     # Nix support
 
 # Themes
-code --install-extension monokai.theme-monokai-pro-vscode
+code --install-extension zhuangtongfa.Material-theme            # One Dark Pro Theme

@@ -16,6 +16,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install nix package manager
 sh <(curl -L https://nixos.org/nix/install)
 
+macos/preferences.sh
 brew/install-packages.sh
 vscode/install-extensions.sh
 ```
@@ -24,12 +25,6 @@ vscode/install-extensions.sh
 
 ```sh
 ./install
-```
-
-## Update Dotbot
-
-```sh
-git submodule update --remote dotbot
 ```
 
 ## Other

@@ -21,7 +21,7 @@ brew install httpie
 brew install shellcheck
 
 # Dev
-brew install rust
+brew install rustup-init; rustup-init -y
 brew install fnm                            # Faster version of npm
 
 # Virtualization

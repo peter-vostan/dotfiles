@@ -3,6 +3,7 @@
 	editor = "code --wait"
 	eol = "lf"
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = ~/.gitignore_global
 
 [diff]
 	tool = "vscode"
@@ -27,15 +28,19 @@
 
 [user]
 	name = Peter Vostan
+
 [interactive]
 	diffFilter = diff-so-fancy --patch
+
 [color]
 	ui = true
+
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+
 [color "diff"]
 	meta = 11
 	frag = magenta bold

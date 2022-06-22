@@ -13,9 +13,10 @@
     ~/.fig/settings.json: terminal/fig.json
     ~/.config/starship.toml: terminal/starship.toml
     ~/.config/git/config: git/config
+    ~/.gitignore_global: git/gitignore_global
     ~/Library/Application Support/Code/user/settings.json: vscode/settings.json
 
 - create: []
 
 - shell: # Shell commands to be run by the installer
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]

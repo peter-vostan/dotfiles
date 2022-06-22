@@ -16,7 +16,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Install nix package manager
 sh <(curl -L https://nixos.org/nix/install)
 
-sudo git/config.sh
 brew/install-packages.sh
 vscode/install-extensions.sh
 ```
@@ -41,4 +40,15 @@ Add the following to `/etc/pam.d/sudo`
 
 ```
 auth       sufficient     pam_tid.so
+```
+
+### Podman
+
+Running linux containers with x11 forwarding. `podmanrungui` is a custom function which runs the XQuartz app and sets up the correct podman args for x11 port forwarding
+
+Example
+
+```sh
+podmanrungui -it ubuntu:20.04;
+apt update; apt install x11-apps -y; xeyes;
 ```

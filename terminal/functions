@@ -13,3 +13,38 @@ function dataurl() {
 	fi
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
+
+function localip() {
+	echo $(ifconfig en0 | grep inet | awk '$1=="inet" {print $2}');
+}
+
+function publicip() {
+	echo "Public IPv4: $( publicipv4 )";
+	echo "Public IPv6: $( publicipv6 )";
+}
+
+function publicipv4() {
+	echo $(dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com);
+}
+
+function publicipv6() {
+	echo $(dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com);
+}
+
+# Run linux container with X11 forwarding
+function podmanrungui() {
+	echo "XQuartz";
+	echo "  Opening app (leave this running for x11 forwarding to work)";
+	echo "  XQuartz -> Preferences -> Security -> Allow connections from network clients, must be enabled (XQuartz restart required after change)"
+	echo ""
+	open /Applications/Utilities/XQuartz.app/;
+
+	echo "Executing"
+	echo "  podman run -e DISPLAY=$(localip):0 -e XAUTHORITY=/.Xauthority -v ~/.Xauthority:/.Xauthority $@"
+	echo ""
+	podman run \
+		-e DISPLAY=$(localip):0 \
+		-e XAUTHORITY=/.Xauthority \
+		-v ~/.Xauthority:/.Xauthority \
+		$@
+}

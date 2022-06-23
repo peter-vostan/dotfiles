@@ -4,10 +4,10 @@
 alias docker=podman
 
 # Easier navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
+alias ..="cd ..; ls"
+alias ...="cd ../..; ls"
+alias ....="cd ../../..; ls"
+alias .....="cd ../../../..; ls"
 
 # ls aliases
 alias l="ls -lFh --color"                              # List all files colorized in long format

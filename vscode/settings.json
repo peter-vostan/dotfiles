@@ -4,6 +4,7 @@
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.fontLigatures": true,
+  "editor.fontFamily": "'FiraCode Nerd Font', monospace",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,

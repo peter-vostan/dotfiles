@@ -10,6 +10,7 @@ code --install-extension usernamehw.errorlens                   # Improved error
 code --install-extension ms-vscode-remote.remote-ssh            # SSH support
 code --install-extension redhat.vscode-yaml                     # YAML support
 code --install-extension tamasfe.even-better-toml               # TOML support
+code --install-extension DavidAnson.vscode-markdownlint         # Markdown linting
 code --install-extension vadimcn.vscode-lldb                    # Debugger support
 code --install-extension esbenp.prettier-vscode                 # Prettier
 code --install-extension hediet.vscode-drawio                   # Drawio

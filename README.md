@@ -33,7 +33,7 @@ vscode/install-extensions.sh
 
 Add the following to `/etc/pam.d/sudo`
 
-```
+```sh
 auth       sufficient     pam_tid.so
 ```
 

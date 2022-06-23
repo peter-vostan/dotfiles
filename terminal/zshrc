@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
+eval "$(direnv hook zsh)"
 
 source $HOME/.cargo/env
 

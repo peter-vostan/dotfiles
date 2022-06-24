@@ -39,6 +39,14 @@ auth       sufficient     pam_tid.so
 
 ### Podman
 
+When initializing the podman machine, mount the home directory for volume mounting to work
+
+```sh
+podman machine init -v $HOME:$HOME
+```
+
+podman-compose can be installed with `pip3 install podman-compose`
+
 Running linux containers with x11 forwarding. `podmanrungui` is a custom function which runs the XQuartz app and sets up the correct podman args for x11 port forwarding
 
 Example

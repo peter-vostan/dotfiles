@@ -8,6 +8,7 @@ brew install --cask stats
 brew install --cask rectangle
 brew install --cask drawio
 brew install --cask kap
+brew install --cask microsoft-teams
 
 # Terminal
 brew install starship

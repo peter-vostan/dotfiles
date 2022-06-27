@@ -14,6 +14,7 @@ code --install-extension DavidAnson.vscode-markdownlint         # Markdown linti
 code --install-extension vadimcn.vscode-lldb                    # Debugger support
 code --install-extension esbenp.prettier-vscode                 # Prettier
 code --install-extension hediet.vscode-drawio                   # Drawio
+code --install-extension withfig.fig                            # Fig support within integrated terminal
 
 # Language Specific
 code --install-extension rust-lang.rust-analyzer                # Rust-Analyzer

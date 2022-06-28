@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+brew update                                 # Update homebrew
+
 # Apps
 brew install --cask bitwarden
 brew install --cask visual-studio-code
@@ -20,6 +22,7 @@ brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 brew install httpie
 brew install shellcheck
+brew install git-town
 
 # Dev
 brew install rustup-init; rustup-init -y

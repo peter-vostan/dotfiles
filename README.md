@@ -1,10 +1,13 @@
 # Installation
 
-## Install Dependencies
+## Install
 
 ```sh
 # Install Apple Command Line Tools
 xcode-select --install
+
+# Install Rosetta (currently required for microsoft-teams and kap)
+sudo softwareupdate --install-rosetta
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -19,11 +22,14 @@ sh <(curl -L https://nixos.org/nix/install)
 macos/preferences.sh
 brew/install-packages.sh
 vscode/install-extensions.sh
-```
 
-## Install Dotfiles
+# Change the terminal font (TODO: find a better way to do this)
+# terminal -> Preferences -> Settings -> Profiles -> Font -> FiraCode Nerd Font -> Regular -> 11
 
-```sh
+# Fig: Open, grant permissions and setup with email
+# Rectangle / Kap / Stats: Open and grant permissions
+
+# Use dotbot to install dotfiles
 ./install
 ```
 

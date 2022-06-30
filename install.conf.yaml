@@ -8,15 +8,14 @@
 
 - create:
     ~/.config:
-    ~/.config/git:
     ~/.ssh:
     ~/dev:
 
 - link:
     ~/.aliases: terminal/aliases
-    ~/.config/git/config: git/config
     ~/.config/starship.toml: terminal/starship.toml
     ~/.functions: terminal/functions
+    ~/.gitconfig: git/config
     ~/.gitignore_global: git/gitignore_global
     ~/.ssh/config: ssh/config
     ~/.zshrc: terminal/zshrc

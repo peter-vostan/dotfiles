@@ -29,7 +29,9 @@ brew install rustup-init; rustup-init -y
 brew install fnm                            # Faster version of npm
 
 # Virtualization
+brew install qemu
 brew install podman
+brew install --cask utm                     # Virtual Machines
 brew install --cask xquartz                 # Macos X11 for X11 port forwarding
 
 # Cloud

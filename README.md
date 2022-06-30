@@ -46,7 +46,7 @@ Add the following to `/etc/pam.d/sudo`
 auth       sufficient     pam_tid.so
 ```
 
-### Podman
+### Container Notes
 
 When initializing the podman machine, mount the home directory for volume mounting to work
 
@@ -54,13 +54,15 @@ When initializing the podman machine, mount the home directory for volume mounti
 podman machine init -v $HOME:$HOME
 ```
 
-podman-compose can be installed with `pip3 install podman-compose`
-
-Running linux containers with x11 forwarding. `podmanrungui` is a custom function which runs the XQuartz app and sets up the correct podman args for x11 port forwarding
-
-Example
+X11 Forwarding requires `-e DISPLAY="$(localip)":0 -e XAUTHORITY=/.Xauthority -v ~/.Xauthority:/.Xauthority` to be set (and see below for other dependencies)
 
 ```sh
-podmanrungui -it ubuntu:20.04;
-apt update; apt install x11-apps -y; xeyes;
+# Tell XQuartz to Allow Connections from Network Clients
+defaults write org.xquartz.X11 nolisten_tcp 0;
+
+# Open XQuartz
+open -a /Applications/Utilities/XQuartz.app/;
+
+# Start the podman machine
+podman machine start;
 ```

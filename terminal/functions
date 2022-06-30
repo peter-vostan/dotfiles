@@ -31,30 +31,3 @@ function publicipv4() {
 function publicipv6() {
 	dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com;
 }
-
-# Run linux container with X11 forwarding
-function podmanrungui() {
-	echo "Checking: XQuartz -> Preferences -> Security -> Allow connections from network clients";
-	if [ "$(defaults read org.xquartz.X11 nolisten_tcp)" != "0" ]; then
-		echo "Closing XQuartz to update setting";
-		osascript -e 'quit app "XQuartz"';
-		defaults write org.xquartz.X11 nolisten_tcp 0;
-		echo "Updated: XQuartz -> Preferences -> Security -> Allow connections from network clients";
-	fi
-
-	echo "";
-	echo "Opening XQuartz";
-	open -a /Applications/Utilities/XQuartz.app/;
-
-	echo "";
-	echo "Starting podman machine";
-	podman machine start;
-
-	echo "";
-	echo "Executing: podman run -e DISPLAY=$(localip):0 -e XAUTHORITY=/.Xauthority -v ~/.Xauthority:/.Xauthority $*";
-	podman run \
-		-e DISPLAY="$(localip)":0 \
-		-e XAUTHORITY=/.Xauthority \
-		-v ~/.Xauthority:/.Xauthority \
-		"$@";
-}

@@ -23,8 +23,11 @@ macos/preferences.sh
 brew/install-packages.sh
 vscode/install-extensions.sh
 
-# Change the terminal font (TODO: find a better way to do this)
-# terminal -> Preferences -> Settings -> Profiles -> Font -> FiraCode Nerd Font -> Regular -> 11
+# Configure terminal profile (TODO: find a better way to do this)
+# terminal -> Preferences -> Settings -> Profiles -> Default
+#   -> Font -> FiraCode Nerd Font -> Regular -> 11
+#   -> Cursor -> Vertical Bar
+#   -> Cursor -> Blink cursor
 
 # Fig: Open, grant permissions and setup with email
 # Rectangle / Kap / Stats: Open and grant permissions

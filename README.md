@@ -3,66 +3,52 @@
 ## Install
 
 ```sh
-# Install Apple Command Line Tools
+# MACOS: Make sure Apple Command Line Tools are installed
 xcode-select --install
 
-# Install Rosetta (currently required for microsoft-teams and kap)
-sudo softwareupdate --install-rosetta
-
-# Install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Install homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Install nix package manager
-sh <(curl -L https://nixos.org/nix/install)
-
-macos/preferences.sh
-brew/install-packages.sh
-vscode/install-extensions.sh
-
-# Configure terminal profile (TODO: find a better way to do this)
-# terminal -> Preferences -> Settings -> Profiles -> Default
-#   -> Font -> FiraCode Nerd Font -> Regular -> 11
-#   -> Cursor -> Vertical Bar
-#   -> Cursor -> Blink cursor
-
-# Fig: Open, grant permissions and setup with email
-# Rectangle / Kap / Stats: Open and grant permissions
-
-# Use dotbot to install dotfiles
+# Run the installation script (this can be run multiple times without causing issues)
 ./install
 ```
 
-## Other
+Pay attention to the Post Install Instructions
 
-### Enable touch id for sudo
-
-Add the following to `/etc/pam.d/sudo`
+Brew can be cleaned up by running the following (omit the --force to simply list what would be cleaned up)
 
 ```sh
-auth       sufficient     pam_tid.so
+brew bundle cleanup --global --force
 ```
 
-### Container Notes
+## Optional Extras
 
-When initializing the podman machine, mount the home directory for volume mounting to work
+### Nix
 
 ```sh
-podman machine init -v $HOME:$HOME
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
-X11 Forwarding requires `-e DISPLAY="$(localip)":0 -e XAUTHORITY=/.Xauthority -v ~/.Xauthority:/.Xauthority` to be set (and see below for other dependencies)
+Useful commands
 
 ```sh
-# Tell XQuartz to Allow Connections from Network Clients
-defaults write org.xquartz.X11 nolisten_tcp 0;
+# Devshell
+nix develop nixpkgs#hello
 
-# Open XQuartz
-open -a /Applications/Utilities/XQuartz.app/;
+# Garbage collection on the nix store
+nix store gc
 
-# Start the podman machine
-podman machine start;
+# List templates
+nix flake show templates
+
+# Initialize the current directory with the rust template
+nix flake init -t templates#rust
+
+# TODO: there doesn't seem to be a good template for a simple devshell flake.nix
+```
+
+### Brew
+
+These are left out by default because they require rosetta `sudo softwareupdate --install-rosetta`
+
+```sh
+brew install --cask microsoft-teams
+brew install --cask kap
 ```

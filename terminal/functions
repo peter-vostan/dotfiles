@@ -5,6 +5,11 @@ function mkd() {
 	mkdir -p "$@" && cd "$_" || exit;
 }
 
+# Use bat to format help output
+function help() {
+    "$@" --help 2>&1 | bat --plain --language=help --paging=never
+}
+
 # Create a data URL from a file
 function dataurl() {
 	local mimeType;

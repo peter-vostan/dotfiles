@@ -10,17 +10,6 @@ podman machine init -v $HOME:$HOME
 
 X11 Forwarding args: `-e DISPLAY="$(localip)":0 -e XAUTHORITY=/.Xauthority -v ~/.Xauthority:/.Xauthority`
 
-## Ubuntu VM
-
-Install with UTM
-
-Run the following for a full desktop environment
-
-```sh
-sudo apt update && sudo apt install ubuntu-desktop
-sudo reboot
-```
-
 ## X11 Forwarding
 
 Use XQuartz

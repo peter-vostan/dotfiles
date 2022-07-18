@@ -2,22 +2,31 @@ tap "homebrew/bundle"
 tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-brew "bat"
-brew "direnv"
-brew "fnm"
-brew "git-town"
-brew "qemu"
-brew "podman"
-brew "shellcheck"
-brew "starship"
-brew "zsh-autosuggestions"
-brew "zsh-syntax-highlighting"
-cask "bitwarden"
-cask "drawio"
-cask "fig"
-cask "font-fira-code-nerd-font"
-cask "google-chrome"
-cask "rectangle"
-cask "stats"
-cask "utm"
-cask "visual-studio-code"
+
+brew "bat"                          # cat but with formatting
+brew "direnv"                       # directory environment loader with nix support
+brew "fnm"                          # faster nvm
+brew "git-town"                     # Git workflows
+brew "mas"                          # Mac Apple Store cli
+brew "openvpn"                      # do I still need this?
+brew "qemu"                         # machine emulator and virtualizer
+brew "podman"                       # Open source alternative to docker
+brew "podman-compose"               # docker-compose support for podman
+brew "shellcheck"                   # linting for shell scripts
+brew "starship"                     # Starship prompt
+
+# cask "bitwarden"                    # Bitwarden from brew
+cask "drawio"                       # drawio app
+cask "font-fira-code-nerd-font"     # nerd font
+cask "google-chrome"                # browser for dev
+# cask "kap"                          # sudo softwareupdate --install-rosetta
+# cask "microsoft-teams"              # sudo softwareupdate --install-rosetta
+cask "miniconda"                    # Environment management for python
+cask "podman-desktop"               # Test this out
+cask "rectangle"                    # window snap areas
+cask "stats"                        # macos stats in menubar
+cask "utm"                          # UI for qemu
+cask "visual-studio-code"           # vscode
+cask "warp"                         # warp.dev terminal
+
+# mas "Bitwarden", id: 1352778147     # Bitwarden from the app store (integration with Safari)

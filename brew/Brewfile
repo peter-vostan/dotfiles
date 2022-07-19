@@ -17,8 +17,10 @@ brew "starship"                     # Starship prompt
 
 # cask "bitwarden"                    # Bitwarden from brew
 cask "drawio"                       # drawio app
+cask "fig"                          # Terminal autocomplete ui
 cask "font-fira-code-nerd-font"     # nerd font
-cask "google-chrome"                # browser for dev
+# cask "google-chrome"                # chrome browser
+cask "iterm2"                       # iterm2 terminal
 # cask "kap"                          # sudo softwareupdate --install-rosetta
 # cask "microsoft-teams"              # sudo softwareupdate --install-rosetta
 cask "miniconda"                    # Environment management for python
@@ -27,6 +29,6 @@ cask "rectangle"                    # window snap areas
 cask "stats"                        # macos stats in menubar
 cask "utm"                          # UI for qemu
 cask "visual-studio-code"           # vscode
-cask "warp"                         # warp.dev terminal
+# cask "warp"                         # warp.dev terminal
 
 # mas "Bitwarden", id: 1352778147     # Bitwarden from the app store (integration with Safari)

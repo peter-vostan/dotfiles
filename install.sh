@@ -4,7 +4,7 @@ set -e
 
 function symlink() {
     echo "${2} -> ${1}"
-    ln -sf "${1}" "${2}"
+    ln -snf "${1}" "${2}"
 }
 
 function enableSudoTouchId() {
@@ -13,6 +13,15 @@ function enableSudoTouchId() {
         sudo sed -i '' '1a\
 auth       sufficient     pam_tid.so
         ' /etc/pam.d/sudo
+    fi
+}
+
+function installOhMyZshCustomPlugin() {
+    if ! [ -d "${HOME}/.oh-my-zsh/custom/plugins/${1}" ]; then
+        echo "Installing ${1}"
+        git clone "${2}" "${HOME}/.oh-my-zsh/custom/plugins/${1}"
+    else
+        echo "${1} already installed"
     fi
 }
 
@@ -42,6 +51,16 @@ else
     echo 'rust already installed'
 fi
 
+if ! [ -d ~/.oh-my-zsh ]; then
+    echo 'Installing oh-my-zsh'
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+else
+    echo 'oh-my-zsh already installed'
+fi
+
+installOhMyZshCustomPlugin zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git
+installOhMyZshCustomPlugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
+
 echo '
 ----- CREATING SYMLINKS
 '
@@ -49,6 +68,7 @@ symlink "$PWD"/brew/Brewfile ~/.Brewfile
 symlink "$PWD"/conda/condarc ~/.condarc
 symlink "$PWD"/terminal/aliases ~/.aliases
 symlink "$PWD"/terminal/functions ~/.functions
+symlink "$PWD"/terminal/iterm2_profile ~/.iterm2_profile
 symlink "$PWD"/terminal/zshrc ~/.zshrc
 mkdir -p ~/.config;     symlink "$PWD"/terminal/starship.toml ~/.config/starship.toml
 mkdir -p ~/.config/nix; symlink "$PWD"/nix/nix.conf ~/.config/nix/nix.conf
@@ -103,6 +123,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # defaults write com.apple.Safari "HomePage" -string "about:blank"
     # defaults write com.apple.Safari UniversalSearchEnabled -bool false
 
+    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/.iterm2_profile"
+    defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
     defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
     defaults write NSGlobalDomain "KeyRepeat" -int 2
     defaults write NSGlobalDomain "InitialKeyRepeat" -int 25
@@ -119,4 +142,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     killall Dock
 fi
 
-echo 'Apps that require login: Warp, Vscode (settings sync)'
+echo 'Apps that require login: Vscode (settings sync) + Fig'

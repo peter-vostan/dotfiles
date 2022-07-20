@@ -1,24 +1,12 @@
 #!/usr/bin/env bash
 
-# Remove this if you want to use actual docker
-alias docker=podman
-
 # Bat is a nicer version of cat with matching api
 alias cat='bat --paging=never'
 
-# Easier navigation
-alias ~="cd ~"
-alias ..="cd ..; ls"
-alias ...="cd ../..; ls"
-alias ....="cd ../../..; ls"
-alias .....="cd ../../../..; ls"
-alias ......="cd ../../../../..; ls"
-
-alias ls="command ls --color"
-alias l='ls -lah'
-alias la='ls -lAh'
-alias ll='ls -lh'
-alias lsa='ls -lah'
+alias ls='exa'                          # ls
+alias ll='exa -lbF --git'               # long list
+alias la='exa -lbFa --git'              # all list
+alias lt='exa --tree --level=2'         # tree view
 
 # Run git status on all of the subdirectories in the dev directory
 alias gsdev="find ~/dev -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"

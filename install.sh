@@ -142,4 +142,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     killall Dock
 fi
 
-echo 'Apps that require login: Vscode (settings sync) + Fig'
+echo 'Apps that require login'
+echo ' - vscode (settings sync)'
+echo ' - fig'
+echo ''
+echo 'Git'
+echo ' $ git config --global user.name ""'
+echo ' $ git config --global user.email ""'

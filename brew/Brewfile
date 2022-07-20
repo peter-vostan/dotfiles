@@ -5,7 +5,9 @@ tap "homebrew/cask-fonts"
 
 brew "bat"                          # cat but with formatting
 brew "direnv"                       # directory environment loader with nix support
+brew "exa"                          # modern replacement for ls
 brew "fnm"                          # faster nvm
+brew "git"                          # Git
 brew "git-town"                     # Git workflows
 brew "mas"                          # Mac Apple Store cli
 brew "openvpn"                      # do I still need this?
@@ -20,13 +22,13 @@ cask "drawio"                       # drawio app
 cask "fig"                          # Terminal autocomplete ui
 cask "font-fira-code-nerd-font"     # nerd font
 # cask "google-chrome"                # chrome browser
+cask "iina"                         # modern media player
 cask "iterm2"                       # iterm2 terminal
 # cask "kap"                          # sudo softwareupdate --install-rosetta
 # cask "microsoft-teams"              # sudo softwareupdate --install-rosetta
 cask "miniconda"                    # Environment management for python
 cask "podman-desktop"               # Test this out
 cask "rectangle"                    # window snap areas
-cask "stats"                        # macos stats in menubar
 cask "utm"                          # UI for qemu
 cask "visual-studio-code"           # vscode
 # cask "warp"                         # warp.dev terminal

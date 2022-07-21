@@ -66,6 +66,7 @@ echo '
 '
 symlink "$PWD"/brew/Brewfile ~/.Brewfile
 symlink "$PWD"/conda/condarc ~/.condarc
+symlink "$PWD"/git/gitignore_global ~/.gitignore_global
 symlink "$PWD"/terminal/aliases ~/.aliases
 symlink "$PWD"/terminal/functions ~/.functions
 symlink "$PWD"/terminal/iterm2_profile ~/.iterm2_profile
@@ -91,6 +92,8 @@ mas outdated
 echo '
 ----- GENERAL CONFIG
 '
+
+git config --global core.excludesfile ~/.gitignore_global
 
 if ! git config --global alias.hack > /dev/null; then
     echo 'Adding git-town aliases'

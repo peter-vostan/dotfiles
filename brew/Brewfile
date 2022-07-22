@@ -9,6 +9,7 @@ brew "exa"                          # modern replacement for ls
 brew "fnm"                          # faster nvm
 brew "git"                          # Git
 brew "git-town"                     # Git workflows
+brew "jq"                           # Json processor
 brew "mas"                          # Mac Apple Store cli
 brew "openvpn"                      # do I still need this?
 brew "qemu"                         # machine emulator and virtualizer
@@ -21,6 +22,7 @@ brew "starship"                     # Starship prompt
 cask "drawio"                       # drawio app
 cask "fig"                          # Terminal autocomplete ui
 cask "font-fira-code-nerd-font"     # nerd font
+# cask "freecad"                      # 3D CAD
 # cask "google-chrome"                # chrome browser
 cask "iina"                         # modern media player
 cask "iterm2"                       # iterm2 terminal
@@ -29,6 +31,7 @@ cask "iterm2"                       # iterm2 terminal
 cask "miniconda"                    # Environment management for python
 cask "podman-desktop"               # Test this out
 cask "rectangle"                    # window snap areas
+# cask "ultimaker-cura"               # 3D printing slicer
 cask "utm"                          # UI for qemu
 cask "visual-studio-code"           # vscode
 # cask "warp"                         # warp.dev terminal

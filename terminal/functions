@@ -36,3 +36,8 @@ function publicipv4() {
 function publicipv6() {
 	dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com;
 }
+
+function awsinfo() {
+	aws iam list-account-aliases | jq -r '."AccountAliases" | join(",")'
+	aws sts get-caller-identity | jq .
+}

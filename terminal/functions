@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 # Create a new directory and enter it
-function mkd() {
+mkd() {
 	mkdir -p "$@" && cd "$_" || exit;
 }
 
 # Use bat to format help output
-function help() {
+help() {
     "$@" --help 2>&1 | bat --plain --language=help --paging=never
 }
 
 # Create a data URL from a file
-function dataurl() {
+dataurl() {
 	local mimeType;
 	mimeType=$(file -b --mime-type "$1");
 	if [[ $mimeType == text/* ]]; then
@@ -20,24 +20,24 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
-function localip() {
+localip() {
 	ifconfig en0 | grep inet | awk '$1=="inet" {print $2}';
 }
 
-function publicip() {
+publicip() {
 	echo "Public IPv4: $( publicipv4 )";
 	echo "Public IPv6: $( publicipv6 )";
 }
 
-function publicipv4() {
+publicipv4() {
 	dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com;
 }
 
-function publicipv6() {
+publicipv6() {
 	dig -6 TXT +short o-o.myaddr.l.google.com @ns1.google.com;
 }
 
-function awsinfo() {
+awsinfo() {
 	aws iam list-account-aliases | jq -r '."AccountAliases" | join(",")'
 	aws sts get-caller-identity | jq .
 }

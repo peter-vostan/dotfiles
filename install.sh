@@ -105,6 +105,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Enable sudo touch id auth if it isn't already
     enableSudoTouchId
 
+    # Remove spotlight shortcut, using Raycast instead
+    /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist -c "Set AppleSymbolicHotKeys:64:enabled false"
+
     # https://macos-defaults.com/
     # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 

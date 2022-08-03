@@ -67,12 +67,20 @@ echo '
 symlink "$PWD"/brew/Brewfile ~/.Brewfile
 symlink "$PWD"/conda/condarc ~/.condarc
 symlink "$PWD"/git/gitignore_global ~/.gitignore_global
+symlink "$PWD"/terminal/alacritty.yml ~/.alacritty.yml      # TODO: delete
 symlink "$PWD"/terminal/aliases ~/.aliases
 symlink "$PWD"/terminal/functions ~/.functions
-symlink "$PWD"/terminal/iterm2_profile ~/.iterm2_profile
 symlink "$PWD"/terminal/zshrc ~/.zshrc
-mkdir -p ~/.config;     symlink "$PWD"/terminal/starship.toml ~/.config/starship.toml
-mkdir -p ~/.config/nix; symlink "$PWD"/nix/nix.conf ~/.config/nix/nix.conf
+
+mkdir -p ~/.config;
+    symlink "$PWD"/terminal/starship.toml ~/.config/starship.toml
+
+mkdir -p ~/.config/kitty;
+    symlink "$PWD"/terminal/kitty.conf      ~/.config/kitty/kitty.conf;
+    symlink "$PWD"/terminal/kitty-themes    ~/.config/kitty/themes;
+
+mkdir -p ~/.config/nix;
+    symlink "$PWD"/nix/nix.conf ~/.config/nix/nix.conf
 
 echo '
 ----- RUNNING: $ brew bundle --global
@@ -105,9 +113,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Enable sudo touch id auth if it isn't already
     enableSudoTouchId
 
-    # Remove spotlight shortcut, using Raycast instead
-    /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.symbolichotkeys.plist -c "Set AppleSymbolicHotKeys:64:enabled false"
-
     # https://macos-defaults.com/
     # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
@@ -129,17 +134,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # defaults write com.apple.Safari "HomePage" -string "about:blank"
     # defaults write com.apple.Safari UniversalSearchEnabled -bool false
 
-    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${HOME}/.iterm2_profile"
-    defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-
     defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
     defaults write NSGlobalDomain "KeyRepeat" -int 2
     defaults write NSGlobalDomain "InitialKeyRepeat" -int 25
     defaults write NSGlobalDomain "NSAutomaticSpellingCorrectionEnabled" -bool false
 
-    # Disable siri
-    # Disable screentime
-    # Disable spotlight indexing??
     # Finder: remove tags / recents, add home / library
 
     chflags nohidden ~/Library
@@ -148,9 +147,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     killall Dock
 fi
 
-echo 'Apps that require login'
-echo ' - vscode (settings sync)'
-echo ' - fig'
+echo 'Apps to install via App Store'
+echo ' - Bitwarden'
+echo ' - Tailscale'
+echo ''
+echo 'Manual actions'
+echo ' - Login to vscode settings sync'
+echo ' - Login to fig'
+echo ' - Disable spotlight command + space shortcut key'
+echo ' - Setup Raycast command + space shortcut key'
+echo ' - Setup Kitty option + space shortcut key (via Raycast)'
+echo ''
+echo 'Brew'
+echo ' $ brew bundle cleanup --global --force'
 echo ''
 echo 'Git'
 echo ' $ git config --global user.name ""'

@@ -13,9 +13,8 @@ brew "git-town"                     # Git workflows
 brew "htop"                         # Realtime info on running processes
 brew "jq"                           # Json processor
 brew "mas"                          # Mac Apple Store cli
-brew "openvpn"                      # do I still need this?
+# brew "openvpn"                      # openvpn client
 brew "qemu"                         # machine emulator and virtualizer
-brew "rectangle"                    # drag / drop window docking
 brew "podman"                       # Open source alternative to docker
 brew "podman-compose"               # docker-compose support for podman
 brew "shellcheck"                   # linting for shell scripts
@@ -24,7 +23,6 @@ brew "starship"                     # Starship prompt
 brew "tldr"                         # Simplified manpages
 brew "websocat"                     # CLI for WebSockets
 
-# cask "alacritty"                    # Bitwarden from brew
 # cask "bitwarden"                    # Bitwarden from brew
 cask "drawio"                       # drawio app
 cask "fig"                          # Terminal autocomplete ui
@@ -32,16 +30,14 @@ cask "font-fira-code-nerd-font"     # nerd font
 # cask "freecad"                      # 3D CAD
 # cask "google-chrome"                # chrome browser
 cask "iina"                         # modern media player
-cask "iterm2"                       # iterm2 terminal
-# cask "kap"                          # sudo softwareupdate --install-rosetta
+cask "kap"                          # sudo softwareupdate --install-rosetta
+cask "kitty"                        # kitty terminal
 cask "messenger"                    # Facebook messenger
-# cask "microsoft-teams"              # sudo softwareupdate --install-rosetta
+cask "microsoft-teams"              # sudo softwareupdate --install-rosetta
 cask "miniconda"                    # Environment management for python
 cask "podman-desktop"               # Test this out
-cask "raycast"
+cask "raycast"                      # spotlight alternative
+cask "rectangle"                    # drag / drop window docking
 # cask "ultimaker-cura"               # 3D printing slicer
 cask "utm"                          # UI for qemu
 cask "visual-studio-code"           # vscode
-
-# mas "Bitwarden", id: 1352778147     # Bitwarden (App store version has integration with Safari)
-# mas "Tailscale", id: 1475387142     # Tailscale (App store version is better supported)

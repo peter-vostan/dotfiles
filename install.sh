@@ -67,7 +67,6 @@ echo '
 symlink "$PWD"/brew/Brewfile ~/.Brewfile
 symlink "$PWD"/conda/condarc ~/.condarc
 symlink "$PWD"/git/gitignore_global ~/.gitignore_global
-symlink "$PWD"/terminal/alacritty.yml ~/.alacritty.yml      # TODO: delete
 symlink "$PWD"/terminal/aliases ~/.aliases
 symlink "$PWD"/terminal/functions ~/.functions
 symlink "$PWD"/terminal/zshrc ~/.zshrc
@@ -91,11 +90,6 @@ echo '
 ----- RUNNING: $ brew bundle cleanup --global
 '
 brew bundle cleanup --global
-
-echo '
------ RUNNING: $ mas outdated
-'
-mas outdated
 
 echo '
 ----- GENERAL CONFIG

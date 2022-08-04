@@ -14,6 +14,8 @@ alias gsdev="find ~/dev -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} &&
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname

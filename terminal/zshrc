@@ -18,10 +18,10 @@ eval "$(fnm env --use-on-cd)"
 eval "$(direnv hook zsh)"
 eval "$(conda shell.zsh hook)"
 
+source $ZSH/oh-my-zsh.sh
 source $HOME/.cargo/env
 source $HOME/.aliases
 source $HOME/.functions
-source $ZSH/oh-my-zsh.sh
 
 bindkey "\e[1;3D" backward-word     # ⌥←
 bindkey "\e[1;3C" forward-word      # ⌥→

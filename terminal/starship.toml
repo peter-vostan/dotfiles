@@ -8,11 +8,14 @@ add_newline = true
 [character] # The name of the module we are configuring is "character"
 success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
-[cmd_duration]
+[line_break]
 disabled = true
 
+[cmd_duration]
+disabled = true # using the zsh timer instead
+
 [aws]
-symbol = "  "
+symbol = " "
 
 [buf]
 symbol = " "
@@ -50,6 +53,10 @@ symbol = " "
 [hg_branch]
 symbol = " "
 
+[hostname]
+ssh_only = true
+ssh_symbol = "🌐" # Looks better without the space
+
 [java]
 symbol = " "
 
@@ -64,6 +71,9 @@ symbol = " "
 
 [nix_shell]
 symbol = " "
+# Don't really care about the state
+# format = "via [$symbol$state( \($name\))]($style) "
+format = "via [$symbol$name]($style) "
 
 [nodejs]
 symbol = " "
@@ -74,8 +84,11 @@ symbol = " "
 [python]
 symbol = " "
 
+[rust]
+symbol = " "
+
 [spack]
 symbol = "🅢 "
 
-[rust]
-symbol = " "
+[terraform]
+disabled = true # Don't really care about the terraform workspace

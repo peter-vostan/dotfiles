@@ -18,7 +18,7 @@ alias fzfp="fzf --preview 'bat --style=numbers --color=always --line-range :500 
 alias fzfh="history 1 | fzf"
 
 alias sshk="kitty +kitten ssh"
-alias ssht-"ssh -f -N -D 9090"          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
+alias ssht="ssh -f -N -D 9090"          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
 
 
 # Intuitive map function

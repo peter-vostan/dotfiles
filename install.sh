@@ -104,6 +104,11 @@ fi
 
 # OS specific config
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    if ! [ -d ~/.terminfo/78/xterm-kitty ]; then
+        echo 'Installing kitty terminfo'
+        tic -x -o ~/.terminfo /Applications/kitty.app/Contents/Resources/kitty/terminfo/kitty.terminfo
+    fi
+
     # Enable sudo touch id auth if it isn't already
     enableSudoTouchId
 

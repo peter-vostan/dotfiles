@@ -6,7 +6,7 @@ add_newline = true
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character] # The name of the module we are configuring is "character"
-success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+success_symbol = '[➜](bold green)' # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
 [line_break]
 disabled = true
@@ -22,10 +22,10 @@ symbol = " "
 
 [hostname]
 ssh_only = true
-ssh_symbol = "🌐" # Looks better without the space
+format = '[\[$hostname\]]($style) in ' # Looks better without the symbol
 
 [nix_shell]
-format = "via [$symbol$name]($style) " # Removed state impure / pure
+format = 'via [$symbol$name]($style) ' # Removed state impure / pure
 
 [package]
 disabled = true # Package version is rarely useful

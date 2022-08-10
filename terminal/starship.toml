@@ -25,7 +25,7 @@ ssh_only = true
 format = '[\[$hostname\]]($style) ' # Looks better without the symbol
 
 [nix_shell]
-format = 'via [$symbol$name]($style) ' # Removed state impure / pure
+format = 'via [$name]($style) ' # Removed symbol and state (impure / pure)
 
 [package]
 disabled = true # Package version is rarely useful

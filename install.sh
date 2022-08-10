@@ -100,7 +100,6 @@ git config --global core.excludesfile ~/.gitignore_global
 if ! git config --global alias.hack > /dev/null; then
     echo 'Adding git-town aliases'
     git-town alias true
-    git-town new-branch-push-flag true
 fi
 
 # OS specific config

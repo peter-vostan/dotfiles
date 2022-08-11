@@ -2,15 +2,8 @@
 [[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && . "$HOME/.fig/shell/zshrc.pre.zsh"
 
 export EDITOR="nano"
-
-export ZSH="$HOME/.oh-my-zsh"
-plugins=(dotenv extract timer urltools zsh-autosuggestions zsh-syntax-highlighting)
-
-# Add system binaries to the path
-export PATH=/sbin:$PATH
-
-# Use bat to format man page output
-export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"
+export PATH=/sbin:$PATH                                             # Add system binaries to the path
+export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"    # Use bat to format man page output
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
@@ -18,7 +11,9 @@ eval "$(fnm env --use-on-cd)"
 eval "$(direnv hook zsh)"
 eval "$(conda shell.zsh hook)"
 
-source $ZSH/oh-my-zsh.sh
+plugins=(dotenv extract timer urltools zsh-autosuggestions zsh-syntax-highlighting)
+
+source $HOME/.oh-my-zsh/oh-my-zsh.sh
 source $HOME/.cargo/env
 source $HOME/.aliases
 source $HOME/.functions

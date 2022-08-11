@@ -4,6 +4,7 @@
 export EDITOR="nano"
 export PATH=/sbin:$PATH                                             # Add system binaries to the path
 export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"    # Use bat to format man page output
+export ENABLE_CORRECTION="true"
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"

@@ -64,22 +64,22 @@ installOhMyZshCustomPlugin zsh-syntax-highlighting https://github.com/zsh-users/
 echo '
 ----- CREATING SYMLINKS
 '
-symlink "$PWD"/brew/Brewfile ~/.Brewfile
-symlink "$PWD"/conda/condarc ~/.condarc
-symlink "$PWD"/git/gitignore_global ~/.gitignore_global
-symlink "$PWD"/terminal/aliases ~/.aliases
-symlink "$PWD"/terminal/functions ~/.functions
-symlink "$PWD"/terminal/zshrc ~/.zshrc
+symlink "$PWD"/Brewfile ~/.Brewfile
+symlink "$PWD"/condarc ~/.condarc
+symlink "$PWD"/gitignore_global ~/.gitignore_global
+symlink "$PWD"/aliases ~/.aliases
+symlink "$PWD"/functions ~/.functions
+symlink "$PWD"/zshrc ~/.zshrc
 
 mkdir -p ~/.config;
-    symlink "$PWD"/terminal/starship.toml ~/.config/starship.toml
+    symlink "$PWD"/starship.toml ~/.config/starship.toml
 
 mkdir -p ~/.config/kitty;
-    symlink "$PWD"/terminal/kitty.conf      ~/.config/kitty/kitty.conf;
-    symlink "$PWD"/terminal/kitty-themes    ~/.config/kitty/themes;
+    symlink "$PWD"/kitty.conf      ~/.config/kitty/kitty.conf;
+    symlink "$PWD"/kitty-themes    ~/.config/kitty/themes;
 
 mkdir -p ~/.config/nix;
-    symlink "$PWD"/nix/nix.conf ~/.config/nix/nix.conf
+    symlink "$PWD"/nix.conf ~/.config/nix/nix.conf
 
 echo '
 ----- RUNNING: $ brew bundle --global

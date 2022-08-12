@@ -70,6 +70,7 @@ symlink "$PWD"/gitignore_global ~/.gitignore_global
 symlink "$PWD"/aliases ~/.aliases
 symlink "$PWD"/functions ~/.functions
 symlink "$PWD"/zshrc ~/.zshrc
+symlink "$PWD"/zshenv ~/.zshenv
 
 mkdir -p ~/.config;
     symlink "$PWD"/starship.toml ~/.config/starship.toml

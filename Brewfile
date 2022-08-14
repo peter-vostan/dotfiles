@@ -28,6 +28,7 @@ brew "terraform"                    # Terraform
 brew "tldr"                         # Simplified manpages
 brew "websocat"                     # CLI for WebSockets
 
+# cask "android-studio"               # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
 # cask "bitwarden"                    # Bitwarden from brew
 cask "docker"                       # Docker binary and desktop
 cask "drawio"                       # drawio app

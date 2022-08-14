@@ -20,6 +20,9 @@ alias fzfh="print -z -- \$(fc -ln 1 | fzf)"
 alias sshk="kitty +kitten ssh"
 alias ssht="ssh -f -N -D 9090"          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
 
+alias lowercase="tr '[:upper:]' '[:lower:]'"
+alias uppercase="tr '[:lower:]' '[:upper:]'"
+
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname

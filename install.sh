@@ -151,6 +151,7 @@ fi
 echo 'Apps to install via App Store'
 echo ' - Bitwarden'
 echo ' - Tailscale'
+echo ' - AdGuard for Safari'
 echo ''
 echo 'Manual actions'
 echo ' - Login to vscode settings sync'

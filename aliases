@@ -14,8 +14,7 @@ alias gsdev="find ~/dev -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} &&
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-alias fzfp="fd --type f --strip-cwd-prefix | fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
-alias fzfh="print -z -- \$(fc -ln 1 | fzf)"
+alias fzfp="fzf --tac --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 alias sshk="kitty +kitten ssh"
 alias ssht="ssh -f -N -D 9090"          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090

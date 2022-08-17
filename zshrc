@@ -4,6 +4,8 @@
 export PATH=/sbin:$PATH                                             # Add system binaries to the path
 export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"    # Use bat to format man page output
 export ENABLE_CORRECTION="true"
+export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
@@ -12,9 +14,12 @@ eval "$(conda shell.zsh hook)"
 
 plugins=(dotenv extract timer urltools zsh-autosuggestions zsh-syntax-highlighting)
 
-. $HOME/.oh-my-zsh/oh-my-zsh.sh
-. $HOME/.aliases
-. $HOME/.functions
+. ~/.oh-my-zsh/oh-my-zsh.sh
+. ~/.aliases
+. ~/.functions
+
+. $(brew --prefix fzf)/shell/key-bindings.zsh   # ^R history, ^T files
+. $(brew --prefix fzf)/shell/completion.zsh     # **<TAB> for fzf completions in cd / kill / ssh / unset / export / unalias
 
 bindkey "\e[1;3D" backward-word     # ⌥←
 bindkey "\e[1;3C" forward-word      # ⌥→

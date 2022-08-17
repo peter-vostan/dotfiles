@@ -26,3 +26,5 @@ alias uppercase="tr '[:lower:]' '[:upper:]'"
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
+
+alias watch="~/dev/gist-watch/watch"

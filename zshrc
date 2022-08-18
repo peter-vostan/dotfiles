@@ -1,5 +1,3 @@
-export PATH=/sbin:$PATH                                                         # Add system binaries to the path
-
 export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"               # Brew completions
 export FPATH="$(brew --prefix curl)/share/zsh/site-functions:${FPATH}"          # Curl completions (missing from macos)
 export FPATH="${HOME}/.oh-my-zsh/custom/plugins/zsh-completions/src:${FPATH}"   # ZSH extra completions (issue with adding to plugins https://github.com/zsh-users/zsh-completions/issues/603)
@@ -59,4 +57,9 @@ if test -n "$KITTY_INSTALLATION_DIR"; then
     autoload -Uz -- "$KITTY_INSTALLATION_DIR"/shell-integration/zsh/kitty-integration
     kitty-integration
     unfunction kitty-integration
+fi
+
+# The nix-daemon should be sourced within /etc/zshrc however it has gone missing on me a couple of times
+if ! which nix > /dev/null && [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+   . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi

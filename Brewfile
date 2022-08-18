@@ -6,6 +6,7 @@ tap "homebrew/cask-fonts"
 brew "awscli"                       # AWS cli
 brew "azure-cli"                    # Azure cli
 brew "bat"                          # cat but with formatting
+brew "curl"                         # curl - installing for the completions which are missing from macos
 brew "direnv"                       # directory environment loader with nix support
 brew "dua-cli"                      # Disk Usage Analyzer $ dua i
 brew "exa"                          # modern replacement for ls
@@ -32,7 +33,6 @@ brew "websocat"                     # CLI for WebSockets
 # cask "bitwarden"                    # Bitwarden from brew
 cask "docker"                       # Docker binary and desktop
 cask "drawio"                       # drawio app
-cask "fig"                          # Terminal autocomplete ui
 cask "font-fira-code-nerd-font"     # nerd font
 # cask "freecad"                      # 3D CAD
 cask "firefox"                      # firefox browser

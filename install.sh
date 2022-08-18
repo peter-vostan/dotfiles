@@ -17,11 +17,13 @@ auth       sufficient     pam_tid.so
 }
 
 function installOhMyZshCustomPlugin() {
-    if ! [ -d "${HOME}/.oh-my-zsh/custom/plugins/${1}" ]; then
+    local directory="${HOME}/.oh-my-zsh/custom/plugins/${1}"
+    if ! [ -d "${directory}" ]; then
         echo "Installing ${1}"
-        git clone "${2}" "${HOME}/.oh-my-zsh/custom/plugins/${1}"
+        git clone "${2}" "${directory}"
     else
-        echo "${1} already installed"
+        echo "${1} already installed, pulling latest..."
+        git -C "${directory}" pull
     fi
 }
 
@@ -58,6 +60,8 @@ else
     echo 'oh-my-zsh already installed'
 fi
 
+installOhMyZshCustomPlugin fzf-tab https://github.com/Aloxaf/fzf-tab.git
+installOhMyZshCustomPlugin zsh-completions https://github.com/zsh-users/zsh-completions.git       # TODO: This doesn't support flakes...
 installOhMyZshCustomPlugin zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git
 installOhMyZshCustomPlugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
 
@@ -155,8 +159,6 @@ echo ' - AdGuard for Safari'
 echo ''
 echo 'Manual actions'
 echo ' - Login to vscode settings sync'
-echo ' - Login to fig'
-echo ' - Add "Include ~/.fig/ssh" into "~/.ssh/config" to use fig over ssh'
 echo ' - Disable spotlight command + space shortcut key'
 echo ' - Setup Raycast command + space shortcut key'
 echo ' - Setup Kitty option + space shortcut key (via Raycast)'

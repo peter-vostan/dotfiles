@@ -4,18 +4,13 @@
 alias cat='bat --paging=never'
 
 alias ls='exa --icons'          # ls
-alias ll='ll -lbF --git'        # long list
+alias ll='ls -lbF --git'        # long list
 alias la='ll -lbFa --git'       # all list
 alias lt='la --tree --level=2'  # tree view
-
-# Run git status on all of the subdirectories in the dev directory
-alias gsdev="find ~/dev -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 alias fpath='echo $FPATH | tr -s ":" "\n"'
-
-alias fzfp="fzf --tac --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 
 alias sshk="kitty +kitten ssh"
 alias ssht="ssh -f -N -D 9090"          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
@@ -29,3 +24,5 @@ alias uppercase="tr '[:lower:]' '[:upper:]'"
 alias map="xargs -n1"
 
 alias watch="~/dev/gist-watch/watch"
+
+alias open-hoppscotch="open https://hoppscotch.io/"      # Open Postman alternative

@@ -41,10 +41,14 @@ zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr $word' # TODO: tldr
 zstyle ':fzf-tab:complete:*:options' fzf-preview
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
 zstyle ':fzf-tab:complete:*:*' fzf-preview '
-    if   [[ -d $realpath ]]; then       exa -lbFa --icons --git --no-user --no-time --no-permissions $realpath;
-    elif which $word > /dev/null; then  (out=$(tldr "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}";
-    elif [[ -f $realpath ]]; then       bat --color=always --style="numbers" $realpath;
-    else                                echo "$desc";
+    if   [[ -d ${realpath} ]]; then exa -lbFa --icons --git --no-user --no-time --no-permissions "${realpath}";
+    elif which ${word} > /dev/null; then (out=$(tldr "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}";
+    elif [[ -f ${realpath} ]]; then
+        case "${realpath:l}" in
+            (*.tar|*.tar.*|*.tgz|*.zip)  tar -tvf "${realpath}" ;;
+            (*) bat --color=always --style="numbers" "${realpath}" ;;
+        esac
+    else echo "${desc}";
     fi'
 zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right:60% --height=80%
 

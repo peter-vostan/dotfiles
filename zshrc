@@ -8,6 +8,9 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"                
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+export LESS="iRF"
+
+export ZSH_DOTENV_FILE=".env"
 export ENABLE_CORRECTION="true"
 
 eval "$(starship init zsh)"
@@ -46,6 +49,7 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview '
     elif [[ -f ${realpath} ]]; then
         case "${realpath:l}" in
             (*.tar|*.tar.*|*.tgz|*.zip)  tar -tvf "${realpath}" ;;
+            (*.png|*.jpg|*.jpeg) chafa -f symbols -s 50x50 "${realpath}" ;;
             (*) bat --color=always --style="numbers" "${realpath}" ;;
         esac
     else echo "${desc}";

@@ -6,6 +6,7 @@ tap "homebrew/cask-fonts"
 brew "awscli"                       # AWS cli
 brew "azure-cli"                    # Azure cli
 brew "bat"                          # cat but with formatting
+brew "chafa"                        # render images in the terminal
 brew "curl"                         # curl - installing for the completions which are missing from macos
 brew "direnv"                       # directory environment loader with nix support
 brew "dua-cli"                      # Disk Usage Analyzer $ dua i
@@ -22,6 +23,7 @@ brew "jq"                           # Json processor
 brew "mas"                          # Mac Apple Store cli
 # brew "openvpn"                      # openvpn client
 # brew "qemu"                         # machine emulator and virtualizer
+brew "ripgrep"                      # better version of grep
 brew "shellcheck"                   # linting for shell scripts
 brew "socat"                        # SOcket CAT: netcat on steroids
 brew "starship"                     # Starship prompt

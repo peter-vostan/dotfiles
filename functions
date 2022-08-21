@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
-# Create a new directory and enter it
 mkd () { mkdir -p "$@" && cd "$_" || exit; }
 
-# Use bat to format help output
 help () { "$@" --help 2>&1 | bat --plain --language=help --paging=never; }
+
+batgrep () {
+	rg --line-number --no-heading --color=always --smart-case "$@" |
+		fzf -d ':' -n 2.. --ansi --no-sort \
+			--preview-window="up,60%,border-bottom,+{2}+3/3" \
+			--preview 'bat --style=numbers --color=always --highlight-line {2} {1}';
+}
 
 # base64 encode / decode
 encode-base64 () { echo "$1" | base64; }

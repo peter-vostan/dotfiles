@@ -9,8 +9,11 @@ export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export LESS="iRF"
+export EDITOR='nano'
+export VISUAL='nano'
 
 export ZSH_DOTENV_FILE=".env"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 export ENABLE_CORRECTION="true"
 
 eval "$(starship init zsh)"
@@ -44,15 +47,21 @@ zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr $word' # TODO: tldr
 zstyle ':fzf-tab:complete:*:options' fzf-preview
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
 zstyle ':fzf-tab:complete:*:*' fzf-preview '
-    if   [[ -d ${realpath} ]]; then exa -lbFa --icons --git --no-user --no-time --no-permissions "${realpath}";
-    elif which ${word} > /dev/null; then (out=$(tldr "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}";
+    if   [[ -d ${realpath} ]]; then
+        exa -lbFa --icons --git --no-user --no-time --no-permissions "${realpath}";
+    elif which ${word} > /dev/null; then
+        (out=$(tldr "$word") 2>/dev/null && echo $out) ||
+        (out=$(man "$word") 2>/dev/null && echo $out | bat -l man --color=always --style="numbers") ||
+        (out=$(which "$word") && echo $out) ||
+        echo "${(P)word}";
     elif [[ -f ${realpath} ]]; then
         case "${realpath:l}" in
             (*.tar|*.tar.*|*.tgz|*.zip)  tar -tvf "${realpath}" ;;
-            (*.png|*.jpg|*.jpeg) chafa -f symbols -s 50x50 "${realpath}" ;;
+            (*.png|*.jpg|*.jpeg) chafa -f symbols -s ${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES} "${realpath}" ;;
             (*) bat --color=always --style="numbers" "${realpath}" ;;
         esac
-    else echo "${desc}";
+    else
+        echo "${desc}";
     fi'
 zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right:60% --height=80%
 

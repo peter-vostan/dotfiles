@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Bat is a nicer version of cat with matching api
-alias cat='bat --paging=never'
+alias cat='bat --paging=never --style="numbers"'
 
 alias ls='exa --icons'          # ls
 alias ll='ls -lbF --git'        # long list
@@ -12,8 +12,8 @@ alias lt='la --tree --level=2'  # tree view
 alias path='echo $PATH | tr -s ":" "\n"'
 alias fpath='echo $FPATH | tr -s ":" "\n"'
 
-alias sshk="kitty +kitten ssh"
-alias ssht="ssh -f -N -D 9090"          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
+alias sshk='kitty +kitten ssh'
+alias ssht='ssh -f -N -D 9090'          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
 
 alias lowercase="tr '[:upper:]' '[:lower:]'"
 alias uppercase="tr '[:lower:]' '[:upper:]'"
@@ -21,8 +21,9 @@ alias uppercase="tr '[:lower:]' '[:upper:]'"
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
-alias map="xargs -n1"
+alias map='xargs -n1'
 
-alias watch="~/dev/gist-watch/watch"
+alias cheats='cat ~/dotfiles/cheatsheet.md'
+alias watch='~/dev/gist-watch/watch'
 
-alias open-hoppscotch="open https://hoppscotch.io/"      # Open Postman alternative
+alias open-hoppscotch='open https://hoppscotch.io/'      # Open Postman alternative

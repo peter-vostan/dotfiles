@@ -19,16 +19,21 @@ auth       sufficient     pam_tid.so
 function installOhMyZshCustomPlugin() {
     local directory="${HOME}/.oh-my-zsh/custom/plugins/${1}"
     if ! [ -d "${directory}" ]; then
-        echo "Installing ${1}"
+        echo ''
+        echo "---- Installing ${1}"
+        echo ''
         git clone "${2}" "${directory}"
     else
-        echo "${1} already installed, pulling latest..."
-        git -C "${directory}" pull
+        echo ''
+        echo "---- ${1} already installed"
+        echo ''
+        git -C "${directory}" fetch
+        git -C "${directory}" status
     fi
 }
 
 echo '
------ CHECKING DEPENDENCIES
+-- CHECKING DEPENDENCIES
 '
 
 if ! which brew > /dev/null; then
@@ -66,7 +71,7 @@ installOhMyZshCustomPlugin zsh-autosuggestions https://github.com/zsh-users/zsh-
 installOhMyZshCustomPlugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 echo '
------ CREATING SYMLINKS
+-- CREATING SYMLINKS
 '
 symlink "$PWD"/Brewfile ~/.Brewfile
 symlink "$PWD"/condarc ~/.condarc
@@ -87,17 +92,17 @@ mkdir -p ~/.config/nix;
     symlink "$PWD"/nix.conf ~/.config/nix/nix.conf
 
 echo '
------ RUNNING: $ brew bundle --global
+-- RUNNING: $ brew bundle --global
 '
 brew bundle --global
 
 echo '
------ RUNNING: $ brew bundle cleanup --global
+-- RUNNING: $ brew bundle cleanup --global
 '
 brew bundle cleanup --global
 
 echo '
------ GENERAL CONFIG
+-- GENERAL CONFIG
 '
 
 git config --global core.excludesfile ~/.gitignore_global

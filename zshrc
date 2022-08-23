@@ -30,22 +30,20 @@ plugins=(dotenv extract rust timer urltools fzf
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:descriptions' format '[%d]'
-zstyle ':fzf-tab:*' switch-group ',' '.'        # switch group using `,` and `.`
-
 zstyle ':completion:complete:*:options' sort false
 zstyle ':completion:*:git-checkout:*' sort false
-
 zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
 
+zstyle ':fzf-tab:*' switch-group ',' '.'        # switch group using `,` and `.`
 zstyle ':fzf-tab:complete:(-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview '[[ $group == "[process ID]" ]] && ps -p $word -o command -w'
 zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
 zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
-
 zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
 zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr $word' # TODO: tldr completions seem to be missing...
 zstyle ':fzf-tab:complete:*:options' fzf-preview
 zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
+zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right:60% --height=80%
 zstyle ':fzf-tab:complete:*:*' fzf-preview '
     if   [[ -d ${realpath} ]]; then
         exa -lbFa --icons --git --no-user --no-time --no-permissions "${realpath}";
@@ -63,7 +61,6 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview '
     else
         echo "${desc}";
     fi'
-zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right:60% --height=80%
 
 bindkey "\e[1;3D" backward-word     # ⌥←
 bindkey "\e[1;3C" forward-word      # ⌥→

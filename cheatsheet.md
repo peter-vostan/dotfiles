@@ -10,8 +10,9 @@ f1      Open cheatsheet
 ⌘ →     Next Tab                                ⌘ ←     Previous Tab
 ⌘ ⌥ →   Move Tab Forward                        ⌘ ⌥ ←   Move Tab Backwards
 
-⌘ ⏎     Split Window                            ⌘ ⇧ d   Close Split Window
-⌘ l     Cycle through layouts                   ⌘ ⇧ ↑   Detach Split Window
+⌘ ⏎     Split Window                            ⌘ l     Cycle through layouts
+⌘ ⇧ ⏎   Split Window with CWD
+⌘ ⇧ d   Close Split Window                      ⌘ ⇧ ↑   Detach Split Window
 ⌘ ⇧ →   Next Split Window                       ⌘ ⇧ ←   Previous Split Window
 ⌘ ⇧ ⌥ → Move Split Window Forward               ⌘ ⇧ ⌥ ← Move Split Window Backwards
 

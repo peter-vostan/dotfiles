@@ -5,13 +5,13 @@ f1      Open cheatsheet
 ⌘ ,     Edit kitty.conf options                 ⌘ ⌃ ,   Reload kitty.conf options
 ⌘ ⌥ ,   Debug kitty.conf options
 
-⌘ t     New Tab
-⌘ w     Close tab                               ⌘ ⌥ t   Rename tab
+⌘ t     New Tab                                 ⌘ w     Close tab
+⌘ ⌥ t   Rename tab                              ⌘ ↑     Detach Tab
 ⌘ →     Next Tab                                ⌘ ←     Previous Tab
 ⌘ ⌥ →   Move Tab Forward                        ⌘ ⌥ ←   Move Tab Backwards
 
-⌘ ⏎     Split Window
-⌘ ⇧ d   Close Split Window                      ⌘ l     Cycle through layouts
+⌘ ⏎     Split Window                            ⌘ ⇧ d   Close Split Window
+⌘ l     Cycle through layouts                   ⌘ ⇧ ↑   Detach Split Window
 ⌘ ⇧ →   Next Split Window                       ⌘ ⇧ ←   Previous Split Window
 ⌘ ⇧ ⌥ → Move Split Window Forward               ⌘ ⇧ ⌥ ← Move Split Window Backwards
 

@@ -11,6 +11,8 @@ batgrep () {
 			--preview 'bat --style=numbers --color=always --highlight-line {2} {1}';
 }
 
+ssh-kitty-terminfo () { infocmp -a xterm-kitty | ssh "$@" tic -x -o \~/.terminfo /dev/stdin; }
+
 # base64 encode / decode
 encode-base64 () { echo "$1" | base64; }
 decode-base64 () { echo "$1" | base64 --decode; }

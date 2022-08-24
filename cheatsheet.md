@@ -30,8 +30,8 @@
 kitty +kitten themes
 clone-in-kitty --type=tab
 
-Run the following if `kitty +kitten ssh` is having errors relating to xterm-kitty
-`$ infocmp -a xterm-kitty | ssh user@remote tic -x -o \~/.terminfo /dev/stdin`
+Run the following command if you are seeing messages like "WARNING: terminal is not fully functional" or "'xterm-kitty': unknown terminal type" on remote machines (this will install the xterm-kitty terminfo)
+`$ ssh-kitty-terminfo user@remote`
 
 ## less pager
 

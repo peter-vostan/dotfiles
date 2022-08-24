@@ -1,31 +1,28 @@
 # cheatsheet
 
-## general
-
-⌘ t     New Tab                                 ⌘ w     Close tab
-
-⌃ l     Clear terminal                          ⌃ d     Close shell
-⌃ r     Search history with fzf                 ⌃ t     Find relative file path with fzf
-
-⇥       Autocomplete                            /       Autocomplete continue
-.       Autocomplete next group                 ,       Autocomplete previous group
-
-## kitty
+f1      Open cheatsheet
 
 ⌘ ,     Edit kitty.conf options                 ⌘ ⌃ ,   Reload kitty.conf options
 ⌘ ⌥ ,   Debug kitty.conf options
 
-⌘ ⌥ t   Rename tab
+⌘ t     New Tab
+⌘ w     Close tab                               ⌘ ⌥ t   Rename tab
 ⌘ →     Next Tab                                ⌘ ←     Previous Tab
 ⌘ ⌥ →   Move Tab Forward                        ⌘ ⌥ ←   Move Tab Backwards
 
-⌘ ⏎     Split window                            ⌘ l     Cycle through layouts
-⌘ ⇧ →   Next Split Pane                         ⌘ ⇧ ←   Previous Split Pane
-⌘ ⇧ ⌥ → Move Split Pane Forward                 ⌘ ⇧ ⌥ ← Move Split Pane Backwards
+⌘ ⏎     Split Window
+⌘ ⇧ d   Close Split Window                      ⌘ l     Cycle through layouts
+⌘ ⇧ →   Next Split Window                       ⌘ ⇧ ←   Previous Split Window
+⌘ ⇧ ⌥ → Move Split Window Forward               ⌘ ⇧ ⌥ ← Move Split Window Backwards
 
+⌘ k     Clear terminal
 ⌘ f     Find - Load scrollback into bat         ⌘ ⇧ f   Find - Search scrollback with fzf
 
-⌃ ⌥     Select columns of text with mouse
+⌃ d     Close shell                             ⌃ ⌥     Select columns of text with mouse
+⌃ r     Search history with fzf                 ⌃ t     Find relative file path with fzf
+
+⇥       Autocomplete                            /       Autocomplete continue
+.       Autocomplete next group                 ,       Autocomplete previous group
 
 kitty +kitten themes
 clone-in-kitty --type=tab

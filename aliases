@@ -23,7 +23,7 @@ alias uppercase="tr '[:lower:]' '[:upper:]'"
 # find . -name .gitattributes | map dirname
 alias map='xargs -n1'
 
-alias cheats='cat ~/dotfiles/cheatsheet.md'
 alias watch='~/dev/gist-watch/watch'
 
+alias open-cheatsheet='cat ~/dotfiles/cheatsheet.md'
 alias open-hoppscotch='open https://hoppscotch.io/'      # Open Postman alternative

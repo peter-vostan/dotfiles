@@ -73,11 +73,11 @@ installOhMyZshCustomPlugin zsh-syntax-highlighting https://github.com/zsh-users/
 echo '
 -- CREATING SYMLINKS
 '
+symlink "$PWD"/aliases ~/.aliases
 symlink "$PWD"/Brewfile ~/.Brewfile
 symlink "$PWD"/condarc ~/.condarc
-symlink "$PWD"/gitignore_global ~/.gitignore_global
-symlink "$PWD"/aliases ~/.aliases
 symlink "$PWD"/functions ~/.functions
+symlink "$PWD"/gitignore_global ~/.gitignore_global
 symlink "$PWD"/zshrc ~/.zshrc
 symlink "$PWD"/zshenv ~/.zshenv
 

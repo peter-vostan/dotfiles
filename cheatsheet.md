@@ -37,6 +37,11 @@ h       Help
 /       Search forward                          ?       Search backward
 n       Next search result                      ⇧ n     Previous search result
 
+## nano
+
+⌃ 6     Set Mark (ie. start selection) / Unset Mark (ie. cancel selection)
+⌃ k     Cut (selection or entire line)          ⌃ u     UnCut Text (ie. paste)
+
 ## reference
 
 ⌘ command   ⌥ option    ⌃ control   ⇧ shift

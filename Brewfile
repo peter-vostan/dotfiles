@@ -6,6 +6,7 @@ tap "homebrew/cask-fonts"
 brew "awscli"                       # AWS cli
 brew "azure-cli"                    # Azure cli
 brew "bat"                          # cat but with formatting
+brew "bottom"                       # alternative to htop
 brew "chafa"                        # render images in the terminal
 brew "curl"                         # curl - installing for the completions which are missing from macos
 brew "direnv"                       # directory environment loader with nix support

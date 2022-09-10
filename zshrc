@@ -14,15 +14,15 @@ export VISUAL='nano'
 
 export ZSH_DOTENV_FILE=".env"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
-export ENABLE_CORRECTION="true"
+# export ENABLE_CORRECTION="true"
 
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
 eval "$(direnv hook zsh)"
 eval "$(conda shell.zsh hook)"
 
-plugins=(dotenv extract rust timer urltools fzf
-    fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(dotenv extract rust timer urltools
+    fzf fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 . ~/.oh-my-zsh/oh-my-zsh.sh
 . ~/.aliases

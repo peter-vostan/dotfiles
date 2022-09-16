@@ -126,23 +126,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # https://macos-defaults.com/
     # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
-    defaults write com.apple.dock "tilesize" -int 36
-    defaults write com.apple.dock "orientation" left
-    defaults write com.apple.dock "show-recents" -bool false
-    defaults write com.apple.dock "autohide" -bool true
-    defaults write com.apple.dock "autohide-delay" -float "0"
-    defaults write com.apple.dock "autohide-time-modifier" -float "0"
     defaults write com.apple.dock "mineffect" -string "scale"
+    defaults write com.apple.dock "tilesize" -int 36
+    defaults write com.apple.dock "show-recents" -bool false
+    # defaults write com.apple.dock "orientation" left
+    # defaults write com.apple.dock "autohide" -bool true
+    # defaults write com.apple.dock "autohide-delay" -float "0"
+    # defaults write com.apple.dock "autohide-time-modifier" -float "0"
 
     defaults write com.apple.finder "ShowPathbar" -bool true
     defaults write com.apple.finder "ShowStatusbar" -bool true
     # defaults write com.apple.finder "AppleShowAllFiles" -bool true
 
     defaults write com.apple.screencapture "type" -string "jpg"
-
-    # defaults write com.apple.Safari "ShowFavoritesBar" -bool false
-    # defaults write com.apple.Safari "HomePage" -string "about:blank"
-    # defaults write com.apple.Safari UniversalSearchEnabled -bool false
 
     defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
     defaults write NSGlobalDomain "KeyRepeat" -int 2

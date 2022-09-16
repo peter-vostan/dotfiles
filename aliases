@@ -10,8 +10,8 @@ alias lt='la --tree --level=2'  # tree view
 alias path='echo $PATH | tr -s ":" "\n"'
 alias fpath='echo $FPATH | tr -s ":" "\n"'
 
-alias sshk='kitty +kitten ssh'          # install kitty-terminfo manually with `$ ssh-kitty-terminfo user@remote` if seeing messages like "WARNING: terminal is not fully functional" or "'xterm-kitty': unknown terminal type"
-alias ssht='ssh -f -N -D 9090'          # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"    # use the kitty ssh which will automatically setup the kitty-terminfo if in kitty (related: ssh-kitty-terminfo in functions)
+alias ssht='ssh -f -N -D 9090'                                  # Open SOCKS5 SSH Tunnel in background 127.0.0.1:9090
 
 alias lowercase="tr '[:upper:]' '[:lower:]'"
 alias uppercase="tr '[:lower:]' '[:upper:]'"

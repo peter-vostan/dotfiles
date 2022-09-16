@@ -11,6 +11,12 @@ batgrep () {
 			--preview 'bat --style=numbers --color=always --highlight-line {2} {1}';
 }
 
+# Kitty requires the remote server to have kitty-terminfo installed for the user
+# The ssh alias should automatically handle this however there are some scenarios where it can't
+# Other options:
+#  - running the following ssh-kitty-terminfo function
+#  - install using the package manager on the remote (ie. `apt install kitty-terminfo` or `dnf install kitty-terminfo`)
+#  - override the TERM to something semi-compatible (ie `export TERM=xterm-256color` or `export TERM=xterm`
 ssh-kitty-terminfo () { infocmp -a xterm-kitty | ssh "$@" tic -x -o \~/.terminfo /dev/stdin; }
 
 # base64 encode / decode

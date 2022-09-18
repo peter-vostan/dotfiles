@@ -7,10 +7,10 @@ brew "awscli"                       # AWS cli
 brew "azure-cli"                    # Azure cli
 brew "bat"                          # cat but with formatting
 brew "bottom"                       # alternative to htop
+brew "broot"                        # New way to see and navigate directory trees
 brew "chafa"                        # render images in the terminal
 brew "curl"                         # curl - installing for the completions which are missing from macos
 brew "direnv"                       # directory environment loader with nix support
-brew "dua-cli"                      # Disk Usage Analyzer $ dua i
 brew "exa"                          # modern replacement for ls
 brew "fd"                           # find alternative
 brew "ffmpeg"                       # Play, record, convert, and stream audio and video

@@ -19,6 +19,21 @@ batgrep () {
 #  - override the TERM to something semi-compatible (ie `export TERM=xterm-256color` or `export TERM=xterm`
 ssh-kitty-terminfo () { infocmp -a xterm-kitty | ssh "$@" tic -x -o \~/.terminfo /dev/stdin; }
 
+# Required for broot
+br() {
+    local cmd cmd_file code
+    cmd_file=$(mktemp)
+    if broot --outcmd "$cmd_file" "$@"; then
+        cmd=$(<"$cmd_file")
+        rm -f "$cmd_file"
+        eval "$cmd"
+    else
+        code=$?
+        rm -f "$cmd_file"
+        return "$code"
+    fi
+}
+
 # base64 encode / decode
 encode-base64 () { echo "$1" | base64; }
 decode-base64 () { echo "$1" | base64 --decode; }

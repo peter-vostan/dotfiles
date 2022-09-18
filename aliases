@@ -7,6 +7,8 @@ alias ll='ls -lbF --git'        # long list
 alias la='ll -lbFa --git'       # all list
 alias lt='la --tree --level=2'  # tree view
 
+alias dua='br -w'               # dua alternatove using broot
+
 alias path='echo $PATH | tr -s ":" "\n"'
 alias fpath='echo $FPATH | tr -s ":" "\n"'
 

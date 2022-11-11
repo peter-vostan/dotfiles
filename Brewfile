@@ -3,6 +3,8 @@ tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 
+# charmbracelet/tap/vhs             # terminal recorder
+
 brew "awscli"                       # AWS cli
 brew "azure-cli"                    # Azure cli
 brew "bat"                          # cat but with formatting

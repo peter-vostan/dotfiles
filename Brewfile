@@ -3,8 +3,6 @@ tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 
-# charmbracelet/tap/vhs             # terminal recorder
-
 brew "awscli"                       # AWS cli
 brew "azure-cli"                    # Azure cli
 brew "bat"                          # cat but with formatting
@@ -21,6 +19,7 @@ brew "fzf"                          # Fuzzy finder
 brew "gifsicle"                     # GIF image/animation creator/editor
 brew "git"                          # Git
 brew "git-town"                     # Git workflows
+brew "gum"                          # Tool for creating interactive scripts
 brew "htop"                         # Realtime info on running processes
 brew "jq"                           # Json processor
 brew "mas"                          # Mac Apple Store cli
@@ -32,6 +31,7 @@ brew "socat"                        # SOcket CAT: netcat on steroids
 brew "starship"                     # Starship prompt
 brew "terraform"                    # Terraform
 brew "tldr"                         # Simplified manpages
+brew "vhs"                          # Terminal recorder
 brew "websocat"                     # CLI for WebSockets
 
 # cask "android-studio"               # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)

@@ -49,6 +49,8 @@ cask "miniconda"                    # Environment management for python
 # cask "ngrok"                        # Reverse proxy, secure introspectable tunnels to localhost
 cask "raycast"                      # spotlight alternative
 cask "rectangle"                    # drag / drop window docking
+cask "shottr"                       # Screenshot tool
+cask "steam"                        # steam
 # cask "ultimaker-cura"               # 3D printing slicer
 # cask "utm"                          # UI for qemu
 cask "visual-studio-code"           # vscode

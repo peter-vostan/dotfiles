@@ -67,7 +67,7 @@ bindkey "^[[1;3D" backward-word     # ⌥ <-
 bindkey "^[[1;3C" forward-word      # ⌥ ->
 bindkey "^[[1;9D" beginning-of-line # ⌘ ->
 bindkey "^[[1;9C" end-of-line       # ⌘ <-
-bindkey "^?" backward-kill-line     # ⌘ delete
+bindkey "^U" backward-kill-line     # ⌘ delete
 
 # The nix-daemon should be sourced within /etc/zshrc however it has gone missing on me a couple of times
 if ! which nix > /dev/null && [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then

@@ -2,6 +2,9 @@
 
 set -e
 
+GREEN='\033[0;32m'
+NO_COLOR='\033[0m'
+
 function symlink() {
     echo "${2} -> ${1}"
     ln -snf "${1}" "${2}"
@@ -25,10 +28,19 @@ function installOhMyZshCustomPlugin() {
         git clone "${2}" "${directory}"
     else
         echo ''
-        echo "---- ${1} already installed"
+        echo "---- ${1}"
         echo ''
         git -C "${directory}" fetch
-        git -C "${directory}" status
+        local local_commit; local_commit=$(git -C "${directory}" rev-parse @)
+        local upstream_commit; upstream_commit=$(git -C "${directory}" rev-parse "@{u}")
+        if ! [ "${local_commit}" = "${upstream_commit}" ]; then
+            git -C "${directory}" status
+            echo ''
+            echo -e "${GREEN}Pull Latest"
+            echo -e " $ git -C '${directory}' pull${NO_COLOR}"
+        else
+            echo 'Up to date'
+        fi
     fi
 }
 

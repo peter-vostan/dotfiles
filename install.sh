@@ -2,9 +2,6 @@
 
 set -e
 
-GREEN='\033[0;32m'
-NO_COLOR='\033[0m'
-
 function symlink() {
     echo "${2} -> ${1}"
     ln -snf "${1}" "${2}"
@@ -27,54 +24,43 @@ function installOhMyZshCustomPlugin() {
         echo ''
         git clone "${2}" "${directory}"
     else
-        echo ''
-        echo "---- ${1}"
-        echo ''
         git -C "${directory}" fetch
         local local_commit; local_commit=$(git -C "${directory}" rev-parse @)
         local upstream_commit; upstream_commit=$(git -C "${directory}" rev-parse "@{u}")
-        if ! [ "${local_commit}" = "${upstream_commit}" ]; then
-            git -C "${directory}" status
-            echo ''
-            echo -e "${GREEN}Pull Latest"
-            echo -e " $ git -C '${directory}' pull${NO_COLOR}"
-        else
-            echo 'Up to date'
+        if ! [ "${local_commit}" = "${upstream_commit}" ] && gum confirm "Update ${1}?"; then
+            git -C "${directory}" pull
         fi
     fi
 }
 
-echo '
--- CHECKING DEPENDENCIES
-'
+echo ''
+echo '-- CHECKING DEPENDENCIES'
+echo ''
 
 if ! which brew > /dev/null; then
     echo 'Installing brew'
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-    echo 'brew already installed'
 fi
 
-if ! which nix > /dev/null; then
+if ! brew list gum > /dev/null; then
+    echo 'Installing gum via brew (required for install script script)'
+    brew install gum
+fi
+
+if ! which nix > /dev/null && gum confirm "Install nix?"; then
     echo 'Installing nix'
     sh <(curl -L https://nixos.org/nix/install)
-else
-    echo 'nix already installed'
 fi
 
-if ! which rustup > /dev/null; then
+if ! which rustup > /dev/null && gum confirm "Install rust?"; then
     echo 'Installing rust'
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-else
-    echo 'rust already installed'
 fi
 
 if ! [ -d ~/.oh-my-zsh ]; then
     echo 'Installing oh-my-zsh'
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-else
-    echo 'oh-my-zsh already installed'
 fi
 
 installOhMyZshCustomPlugin fzf-tab https://github.com/Aloxaf/fzf-tab.git
@@ -82,14 +68,16 @@ installOhMyZshCustomPlugin zsh-completions https://github.com/zsh-users/zsh-comp
 installOhMyZshCustomPlugin zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git
 installOhMyZshCustomPlugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
 
-echo '
--- CREATING SYMLINKS
-'
+echo ''
+echo '-- CREATING SYMLINKS'
+echo ''
+
 symlink "$PWD"/aliases ~/.aliases
 symlink "$PWD"/Brewfile ~/.Brewfile
 symlink "$PWD"/condarc ~/.condarc
 symlink "$PWD"/functions ~/.functions
 symlink "$PWD"/gitignore_global ~/.gitignore_global
+symlink "$PWD"/zprofile ~/.zprofile
 symlink "$PWD"/zshrc ~/.zshrc
 symlink "$PWD"/zshenv ~/.zshenv
 
@@ -100,23 +88,32 @@ mkdir -p ~/.config/kitty;
     symlink "$PWD"/kitty.conf      ~/.config/kitty/kitty.conf;
     symlink "$PWD"/kitty-themes    ~/.config/kitty/themes;
 
+mkdir -p ~/.config/navi;
+    symlink "$PWD"/navi.yml ~/.config/navi/config.yml
+
 mkdir -p ~/.config/nix;
     symlink "$PWD"/nix.conf ~/.config/nix/nix.conf
 
-echo '
--- RUNNING: $ brew bundle --global
-'
-brew bundle --global
+echo ''
+echo '-- BREW'
+echo ''
 
-echo '
--- RUNNING: $ brew bundle cleanup --global
-'
-brew bundle cleanup --global
+! brew bundle check --global -v && \
+    gum confirm "Run \`brew bundle install --global\`?" && \
+    brew bundle install --global
 
-echo '
--- GENERAL CONFIG
-'
+if brew bundle cleanup --global | grep 'Would uninstall' > /dev/null; then
+    echo ''
+    brew bundle cleanup --global
+    gum confirm "Run \`brew bundle cleanup --global --force\`?" && \
+        brew bundle cleanup --global --force
+fi
 
+echo ''
+echo '-- GENERAL CONFIG'
+echo ''
+
+echo 'Setting gitignore_global excludes file'
 git config --global core.excludesfile ~/.gitignore_global
 
 if ! git config --global alias.hack > /dev/null; then
@@ -165,19 +162,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     killall Dock
 fi
 
-echo 'Apps to install via App Store'
-echo ' - Bitwarden'
-echo ' - Tailscale'
-echo ''
 echo 'Manual actions'
+echo ' - Install Bitwarden / Tailscale from App Store'
 echo ' - Login to vscode settings sync'
-echo ' - Disable spotlight command + space shortcut key'
-echo ' - Setup Raycast command + space shortcut key'
-echo ' - Setup Kitty option + space shortcut key (via Raycast)'
-echo ''
-echo 'Brew'
-echo ' $ brew bundle cleanup --global --force'
-echo ''
-echo 'Git'
-echo ' $ git config --global user.name ""'
-echo ' $ git config --global user.email ""'
+echo ' - Install navi default and tldr repo'
+echo ' - Raycast shortcuts'
+echo '    - Disable spotlight cmd+space shortcut key'
+echo '    - Setup Raycast cmd+space shortcut key'
+echo '    - Setup Kitty opt+space shortcut key (via Raycast)'
+echo ' - Configure git user name and email'
+echo "     \`git config --global user.name ''\`"
+echo "     \`git config --global user.email ''\`"

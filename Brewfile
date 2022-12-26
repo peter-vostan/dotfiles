@@ -22,14 +22,12 @@ brew "git-town"                     # Git workflows
 brew "gum"                          # Tool for creating interactive scripts
 brew "htop"                         # Realtime info on running processes
 brew "jq"                           # Json processor
-# brew "mas"                          # Mac Apple Store cli
-# brew "openvpn"                      # openvpn client
+brew "navi"                         # Interactive cheatsheet tool
 # brew "qemu"                         # machine emulator and virtualizer
 brew "ripgrep"                      # better version of grep
 brew "socat"                        # Socket CAT: netcat on steroids
 brew "starship"                     # Starship prompt
 # brew "terraform"                    # Terraform
-brew "tldr"                         # Simplified manpages
 brew "vhs"                          # Terminal recorder
 brew "websocat"                     # CLI for WebSockets
 

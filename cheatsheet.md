@@ -3,8 +3,8 @@
 f1      Open cheatsheet
 
 ⌘ k     Clear                                   ⌃ ⌥     Select columns of text with mouse
-⌘ f     Find - Load scrollback into bat         ⌘ ⌥ f   Find - Search scrollback with fzf
-⌃ r     Search history with fzf                 ⌃ t     Find relative file path with fzf
+⌘ f     Find - Load scrollback into bat         ⌃ r     Search history with fzf
+⌃ g     Open navi widget                        ⌃ t     Find relative file path with fzf
 
 ## tabs
 

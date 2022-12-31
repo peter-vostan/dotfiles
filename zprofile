@@ -1,1 +1,1 @@
-echo 'Press F1 for terminal config cheatsheet'
+[[ "$TERM" == "xterm-kitty" ]] && echo 'Press F1 for kitty terminal config cheatsheet'

@@ -9,7 +9,7 @@ export VISUAL='nano'
 export LESS="iRFM" # i=ignore case, R=raw characters (colors), F=quit if everything fits on one page, M=long prompt
 export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"                # Use bat to format man page output
 export BAT_THEME="ansi"
-export NAVI_CONFIG="./.config/navi/config.yml"
+export NAVI_CONFIG="${HOME}/.config/navi/config.yml"
 
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

@@ -8,7 +8,7 @@ function symlink() {
 }
 
 function enableSudoTouchId() {
-    if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null; then
+    if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null && gum confirm "Enable sudo touch id?"; then
         echo 'Enabling sudo touch id'
         sudo sed -i '' '1a\
 auth       sufficient     pam_tid.so
@@ -113,12 +113,30 @@ echo ''
 echo '-- GENERAL CONFIG'
 echo ''
 
-echo 'Setting gitignore_global excludes file'
-git config --global core.excludesfile ~/.gitignore_global
+if gum confirm "Configure git?"; then
+    echo 'Setting gitignore_global excludes file'
+    git config --global core.excludesfile ~/.gitignore_global
+
+    echo ''
+    echo 'Git user.name'
+    git config --global user.name "$(
+        gum input --placeholder 'Git user.name' --value "$(git config --global user.name)"
+    )"
+    git config --global user.name
+    echo ''
+
+    echo 'Git user email'
+    git config --global user.email "$(
+        gum input --placeholder 'Git user.email' --value "$(git config --global user.email)"
+    )"
+    git config --global user.email
+    echo ''
+fi
 
 if ! git config --global alias.hack > /dev/null; then
     echo 'Adding git-town aliases'
     git-town alias true
+    echo ''
 fi
 
 # OS specific config
@@ -132,44 +150,40 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Enable sudo touch id auth if it isn't already
     enableSudoTouchId
 
-    # https://macos-defaults.com/
-    # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
+    if gum confirm "Configure Macos Preferences?"; then
+        # https://macos-defaults.com/
+        # https://github.com/mathiasbynens/dotfiles/blob/main/.macos
 
-    defaults write com.apple.dock "mineffect" -string "scale"
-    defaults write com.apple.dock "tilesize" -int 36
-    defaults write com.apple.dock "show-recents" -bool false
-    # defaults write com.apple.dock "orientation" left
-    defaults write com.apple.dock "autohide" -bool true
-    defaults write com.apple.dock "autohide-delay" -float "0"
-    defaults write com.apple.dock "autohide-time-modifier" -float "0"
+        defaults write com.apple.dock "mineffect" -string "scale"
+        defaults write com.apple.dock "tilesize" -int 36
+        defaults write com.apple.dock "show-recents" -bool false
+        # defaults write com.apple.dock "orientation" left
+        defaults write com.apple.dock "autohide" -bool true
+        defaults write com.apple.dock "autohide-delay" -float "0"
+        defaults write com.apple.dock "autohide-time-modifier" -float "0"
 
-    defaults write com.apple.finder "ShowPathbar" -bool true
-    defaults write com.apple.finder "ShowStatusbar" -bool true
-    # defaults write com.apple.finder "AppleShowAllFiles" -bool true
+        defaults write com.apple.finder "ShowPathbar" -bool true
+        defaults write com.apple.finder "ShowStatusbar" -bool true
+        # defaults write com.apple.finder "AppleShowAllFiles" -bool true
 
-    defaults write com.apple.screencapture "type" -string "jpg"
+        defaults write com.apple.screencapture "type" -string "jpg"
 
-    defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
-    defaults write NSGlobalDomain "KeyRepeat" -int 2
-    defaults write NSGlobalDomain "InitialKeyRepeat" -int 25
-    defaults write NSGlobalDomain "NSAutomaticSpellingCorrectionEnabled" -bool false
+        defaults write NSGlobalDomain "AppleShowAllExtensions" -bool "true"
+        defaults write NSGlobalDomain "KeyRepeat" -int 2
+        defaults write NSGlobalDomain "InitialKeyRepeat" -int 25
+        defaults write NSGlobalDomain "NSAutomaticSpellingCorrectionEnabled" -bool false
 
-    # Finder: remove tags / recents, add home / library
+        # Finder: remove tags / recents, add home / library
 
-    chflags nohidden ~/Library
+        chflags nohidden ~/Library
 
-    killall Finder
-    killall Dock
+        killall Finder
+        killall Dock
+    fi
 fi
 
 echo 'Manual actions'
 echo ' - Install Bitwarden / Tailscale from App Store'
 echo ' - Login to vscode settings sync'
 echo ' - Install navi default and tldr repo'
-echo ' - Raycast shortcuts'
-echo '    - Disable spotlight cmd+space shortcut key'
-echo '    - Setup Raycast cmd+space shortcut key'
-echo '    - Setup Kitty opt+space shortcut key (via Raycast)'
-echo ' - Configure git user name and email'
-echo "     \`git config --global user.name ''\`"
-echo "     \`git config --global user.email ''\`"
+echo ' - Setup Kitty opt+space shortcut key (via Shortcuts.app)'

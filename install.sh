@@ -114,8 +114,9 @@ echo '-- GENERAL CONFIG'
 echo ''
 
 if gum confirm "Configure git?"; then
-    echo 'Setting gitignore_global excludes file'
     git config --global core.excludesfile ~/.gitignore_global
+    git config --global pull.rebase true
+    git config --global push.autoSetupRemote true
 
     echo ''
     echo 'Git user.name'
@@ -130,12 +131,6 @@ if gum confirm "Configure git?"; then
         gum input --placeholder 'Git user.email' --value "$(git config --global user.email)"
     )"
     git config --global user.email
-    echo ''
-fi
-
-if ! git config --global alias.hack > /dev/null; then
-    echo 'Adding git-town aliases'
-    git-town alias true
     echo ''
 fi
 

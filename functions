@@ -2,7 +2,59 @@
 
 mkd () { mkdir -p "$@" && cd "$_" || exit; }
 
-help () { "$@" --help 2>&1 | bat --plain --language=help --paging=never; }
+git-hack () {
+	local remote parent branch_name
+
+	branch_name="$1"
+	[ -z "${branch_name}" ] && return 1
+
+	# shellcheck disable=SC2046
+	# shellcheck disable=SC2015
+	remote=$([ $(git remote | wc -l) = 1 ] && git remote || git-remote-choose)
+	[ -z "${remote}" ] && return 1
+
+	gum spin --spinner points --title "Fetching" -- git fetch --prune --tags;
+
+	echo 'Select parent branch'
+	parent=$(git-branch-choose)
+	[ -z "${parent}" ] && return 1
+
+	git add -A
+	git stash
+	git checkout "${parent}"
+	git rebase "${remote}"/"${parent}"
+	git branch "${branch_name}" "${parent}"
+	git checkout "${branch_name}"
+	git stash pop
+}
+
+git-sync () {
+	local remote parent branch_name
+
+	branch_name=$(git rev-parse --abbrev-ref HEAD)
+	[ -z "${branch_name}" ] && return 1
+
+	# shellcheck disable=SC2046
+	# shellcheck disable=SC2015
+	remote=$([ $(git remote | wc -l) = 1 ] && git remote || git-remote-choose)
+	[ -z "${remote}" ] && return 1
+
+	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags;
+
+	echo 'Select parent branch'
+	parent=$(git-branch-choose)
+	[ -z "${parent}" ] && return 1
+
+	git add -A
+	git stash
+	git checkout "${parent}"
+	git pull
+	git checkout offline-handling
+	git merge --no-edit "${remote}"/offline-handling
+	git merge --no-edit "${parent}"
+	git push
+	git stash pop
+}
 
 batgrep () {
 	rg --line-number --no-heading --color=always --smart-case "$@" |
@@ -69,35 +121,20 @@ qr-svg () {
 	curl -d "${input}" https://qrcode.show -H "Accept: image/svg+xml"
 }
 
+convert-to-gif () {
+	INPUT="$1"
+	FRAMERATE=$(gum input --prompt "Frame rate: " --placeholder "Frame Rate" --value "10")
+	WIDTH=$(gum input --prompt "Width: " --placeholder "Width" --value "1200")
+	MAXCOLORS=$(gum input --prompt "Max Colors: " --placeholder "Max Colors" --value "256")
+
+	BASENAME=$(basename "$INPUT")
+	BASENAME="${BASENAME%%.*}"
+
+	gum spin --spinner points --title "Converting to GIF" -- \
+		ffmpeg -i "$INPUT" -vf "fps=$FRAMERATE,scale=$WIDTH:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=${MAXCOLORS}[p];[s1][p]paletteuse" "$BASENAME.gif"
+}
+
 aws-info () {
 	aws iam list-account-aliases | jq -r '."AccountAliases" | join(",")'
 	aws sts get-caller-identity | jq .
-}
-
-# Copied and modified from https://gist.github.com/SheldonWangRJT/8d3f44a35c8d1386a396b9b49b43c385
-# Usage: v2g my-vid.mov
-#        v2g my-vid.mov --target my-gif.gif --resolution 800x400 --fps 10
-v2g () {
-	local src="$1";
-	local target="${1%.*}.gif";
-	local resolution=""; # eg. 800x400 (defaults to source video resolution)
-	local fps=10;
-
-	while [ $# -gt 0 ]; do
-        if [[ $1 == *"--"* ]]; then
-			param="${1/--/}";
-			declare "$param"="$2";
-        fi
-        shift
-    done
-
-	[[ -n $fps ]] && fps="-r $fps";
-    [[ -n $resolution ]] && resolution="-s $resolution";
-
-	local cmd2run="ffmpeg -i '$src' -pix_fmt rgb8 $fps $resolution '$target' && gifsicle -O3 '$target' -o '$target'";
-	echo "Running: $ $cmd2run";
-	echo ""
-	eval "$cmd2run";
-	echo ""
-	echo "'$src' successfully converted and saved as '$target'";
 }

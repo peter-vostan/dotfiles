@@ -8,7 +8,6 @@ brew "azure-cli"                    # Azure cli
 brew "bat"                          # cat but with formatting
 brew "bottom"                       # alternative to htop
 brew "broot"                        # New way to see and navigate directory trees
-brew "chafa"                        # render images in the terminal
 brew "curl"                         # curl - installing for the completions which are missing from macos
 brew "direnv"                       # directory environment loader with nix support
 brew "exa"                          # modern replacement for ls
@@ -16,9 +15,7 @@ brew "fd"                           # find alternative
 brew "ffmpeg"                       # Play, record, convert, and stream audio and video
 brew "fnm"                          # faster nvm
 brew "fzf"                          # Fuzzy finder
-brew "gifsicle"                     # GIF image/animation creator/editor
 brew "git"                          # Git
-brew "git-town"                     # Git workflows
 brew "gum"                          # Tool for creating interactive scripts
 brew "htop"                         # Realtime info on running processes
 brew "jq"                           # Json processor

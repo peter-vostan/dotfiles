@@ -61,7 +61,6 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview '
     elif [[ -f ${realpath} ]]; then
         case "${realpath:l}" in
             (*.tar|*.tar.*|*.tgz|*.zip)  tar -tvf "${realpath}" ;;
-            (*.png|*.jpg|*.jpeg) chafa -f symbols -s ${FZF_PREVIEW_COLUMNS}x${FZF_PREVIEW_LINES} "${realpath}" ;;
             (*) bat --color=always --style="plain" "${realpath}" ;;
         esac
     else

@@ -13,7 +13,7 @@ git-hack () {
 	remote=$([ $(git remote | wc -l) = 1 ] && git remote || git-remote-choose)
 	[ -z "${remote}" ] && return 1
 
-	gum spin --spinner points --title "Fetching" -- git fetch --prune --tags;
+	gum spin --spinner points --title "Fetching" -- git fetch --prune --tags
 
 	echo 'Select parent branch'
 	parent=$(git-branch-choose)
@@ -39,7 +39,7 @@ git-sync () {
 	remote=$([ $(git remote | wc -l) = 1 ] && git remote || git-remote-choose)
 	[ -z "${remote}" ] && return 1
 
-	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags;
+	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
 
 	echo 'Select parent branch'
 	parent=$(git-branch-choose)
@@ -54,6 +54,21 @@ git-sync () {
 	git merge --no-edit "${parent}"
 	git push
 	git stash pop
+}
+
+git-prune-branches () {
+	local branches
+	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
+	echo 'Branches'
+	git branch -vv
+	echo ''
+	branches=$(git branch -vv | grep gone | awk '{print $1}')
+	if [[ "${branches}" ]]; then
+		echo 'Dangling branches found'
+		echo "${branches}" | gum choose --no-limit | xargs git branch -D
+	else
+		echo 'No dangling branches found'
+	fi
 }
 
 batgrep () {

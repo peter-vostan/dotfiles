@@ -24,7 +24,6 @@ alias git-stage='git-changes-choose --no-limit | xargs git add'
 alias git-unstage='git-changes-choose --no-limit | xargs git reset --'
 alias git-restore='git-changes-choose --no-limit | xargs git restore'
 alias git-branch-delete='git-branch-choose --no-limit | xargs git branch -D'
-alias git-prune-branches='git branch --list --merged | cut -c 3- | grep -vE "^(main|master)" | gum choose --no-limit | xargs git branch -D'
 
 alias watch='~/dev/gist-watch/watch'
 

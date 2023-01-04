@@ -15,8 +15,10 @@ git-hack () {
 
 	gum spin --spinner points --title "Fetching" -- git fetch --prune --tags
 
-	echo 'Select parent branch'
-	parent=$(git-branch-choose)
+	parent=$(git branch | cut -c 3- | grep -E 'main|master' | head -n 1)
+	! gum confirm "Hack from ${parent}?" && \
+		echo 'Select parent branch' && \
+		parent=$(git-branch-choose)
 	[ -z "${parent}" ] && return 1
 
 	git add -A
@@ -41,16 +43,18 @@ git-sync () {
 
 	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
 
-	echo 'Select parent branch'
-	parent=$(git-branch-choose)
+	parent=$(git-branch-parent)
+	! gum confirm "Pull from ${parent}?" && \
+		echo 'Select parent branch' && \
+		parent=$(git-branch-choose)
 	[ -z "${parent}" ] && return 1
 
 	git add -A
 	git stash
 	git checkout "${parent}"
 	git pull
-	git checkout offline-handling
-	git merge --no-edit "${remote}"/offline-handling
+	git checkout "${branch_name}"
+	git merge --no-edit "${remote}"/"${branch_name}"
 	git merge --no-edit "${parent}"
 	git push
 	git stash pop

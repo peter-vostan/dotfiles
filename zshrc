@@ -60,7 +60,7 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview '
         echo "${(P)word}";
     elif [[ -f ${realpath} ]]; then
         case "${realpath:l}" in
-            (*.tar|*.tar.*|*.tgz|*.zip)  tar -tvf "${realpath}" ;;
+            (*.tar|*.tar.*|*.tgz|*.zip) tar -tvf "${realpath}" ;;
             (*) bat --color=always --style="plain" "${realpath}" ;;
         esac
     else

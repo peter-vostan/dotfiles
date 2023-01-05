@@ -3,15 +3,10 @@
 mkd () { mkdir -p "$@" && cd "$_" || exit; }
 
 git-hack () {
-	local remote parent branch_name
+	local parent branch_name
 
 	branch_name="$1"
 	[ -z "${branch_name}" ] && return 1
-
-	# shellcheck disable=SC2046
-	# shellcheck disable=SC2015
-	remote=$([ $(git remote | wc -l) = 1 ] && git remote || git-remote-choose)
-	[ -z "${remote}" ] && return 1
 
 	gum spin --spinner points --title "Fetching" -- git fetch --prune --tags
 
@@ -24,22 +19,17 @@ git-hack () {
 	git add -A
 	git stash
 	git checkout "${parent}"
-	git rebase "${remote}"/"${parent}"
+	git pull
 	git branch "${branch_name}" "${parent}"
 	git checkout "${branch_name}"
 	git stash pop
 }
 
 git-sync () {
-	local remote parent branch_name
+	local parent branch_name
 
 	branch_name=$(git rev-parse --abbrev-ref HEAD)
 	[ -z "${branch_name}" ] && return 1
-
-	# shellcheck disable=SC2046
-	# shellcheck disable=SC2015
-	remote=$([ $(git remote | wc -l) = 1 ] && git remote || git-remote-choose)
-	[ -z "${remote}" ] && return 1
 
 	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
 
@@ -54,7 +44,7 @@ git-sync () {
 	git checkout "${parent}"
 	git pull
 	git checkout "${branch_name}"
-	git merge --no-edit "${remote}"/"${branch_name}"
+	git pull
 	git merge --no-edit "${parent}"
 	git push
 	git stash pop

@@ -54,7 +54,7 @@ git-prune-branches () {
 	local branches
 	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
 	echo 'Branches'
-	git branch -vv
+	git --no-pager branch -vv
 	echo ''
 	branches=$(git branch -vv | grep gone | awk '{print $1}')
 	if [[ "${branches}" ]]; then

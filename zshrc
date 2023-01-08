@@ -29,6 +29,8 @@ eval "$(direnv hook zsh)"
 eval "$(conda shell.zsh hook)"
 eval "$(navi widget zsh)"       # ⌃G to open widget
 
+unsetopt beep
+
 plugins=(dotenv extract rust timer urltools
     fzf fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 

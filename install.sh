@@ -115,7 +115,6 @@ echo ''
 
 if gum confirm "Configure git?"; then
     git config --global core.excludesfile ~/.gitignore_global
-    git config --global pull.rebase true
     git config --global push.autoSetupRemote true
 
     git config --global alias.hack '!bash -c "shopt -s expand_aliases; . ~/.aliases && . ~/.functions && git-hack $@"'

@@ -2,10 +2,10 @@
 
 alias cat='bat --paging=never --style="numbers"'
 
-alias ls='exa --icons'          # ls
-alias ll='ls -lbF --git'        # long list
-alias la='ll -lbFa --git'       # all list
-alias lt='la --tree --level=2'  # tree view
+alias ls='lsd'
+alias ll='ls -l'
+alias la='ls -la'
+alias lt='ls --tree --depth 2'
 
 alias dua='br -w'               # dua alternatove using broot
 

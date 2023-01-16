@@ -52,7 +52,7 @@ zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
 zstyle ':fzf-tab:complete:*:*' fzf-flags --preview-window=right:60% --height=80%
 zstyle ':fzf-tab:complete:*:*' fzf-preview '
     if   [[ -d ${realpath} ]]; then
-        exa -lbFa --icons --git --no-user --no-time --no-permissions "${realpath}";
+        lsd -l --color always --blocks size,name "${realpath}";
     elif which ${word} > /dev/null; then
         (out=$(man "$word") 2>/dev/null && echo $out | bat -l man --color=always --style="plain") ||
         (out=$(which "$word") && echo $out) ||

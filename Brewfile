@@ -3,52 +3,66 @@ tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 
-brew "awscli"                       # AWS cli
-brew "azure-cli"                    # Azure cli
+#### TERMINAL SETUP DEPENDENCIES
 brew "bat"                          # cat but with formatting
+brew "fd"                           # find alternative
+cask "font-fira-code-nerd-font"     # nerd font
+brew "fzf"                          # Fuzzy finder
+cask "kitty"                        # kitty terminal
+brew "lsd"                          # Clone of ls with colorful output, file type icons, and more
+brew "navi"                         # Interactive cheatsheet tool
+brew "starship"                     # Starship prompt
+
+#### OTHER TERMINAL UTILS
 brew "bottom"                       # alternative to htop
 brew "broot"                        # New way to see and navigate directory trees
 brew "curl"                         # curl - installing for the completions which are missing from macos
 brew "direnv"                       # directory environment loader with nix support
-brew "exa"                          # modern replacement for ls
-brew "fd"                           # find alternative
 brew "ffmpeg"                       # Play, record, convert, and stream audio and video
-brew "fnm"                          # faster nvm
-brew "fzf"                          # Fuzzy finder
-brew "git"                          # Git
 brew "gum"                          # Tool for creating interactive scripts
 brew "htop"                         # Realtime info on running processes
 brew "jq"                           # Json processor
-brew "navi"                         # Interactive cheatsheet tool
-# brew "qemu"                         # machine emulator and virtualizer
 brew "ripgrep"                      # better version of grep
 brew "socat"                        # Socket CAT: netcat on steroids
-brew "starship"                     # Starship prompt
-# brew "terraform"                    # Terraform
 brew "vhs"                          # Terminal recorder
 brew "websocat"                     # CLI for WebSockets
 
-# cask "android-studio"               # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
-cask "docker"                       # Docker binary and desktop
-cask "drawio"                       # drawio app
-cask "font-fira-code-nerd-font"     # nerd font
-# cask "freecad"                      # 3D CAD
+#### BROWSERS
 cask "firefox"                      # firefox browser
 cask "google-chrome"                # chrome browser
-cask "iina"                         # modern media player
-cask "kitty"                        # kitty terminal
-cask "messenger"                    # Facebook messenger
-cask "microsoft-teams"              # Microsoft Teams ($ sudo softwareupdate --install-rosetta)
+
+#### DEVELOPMENT TOOLS / APPS
+# cask "android-studio"               # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
+brew "awscli"                       # AWS cli
+brew "azure-cli"                    # Azure cli
+cask "drawio"                       # drawio app
+brew "fnm"                          # faster nvm
+brew "git"                          # Git
 cask "miniconda"                    # Environment management for python
 # cask "ngrok"                        # Reverse proxy, secure introspectable tunnels to localhost
+# brew "terraform"                    # Terraform
+cask "visual-studio-code"           # vscode
+
+#### GENERAL APPS
+cask "messenger"                    # Facebook messenger
+cask "microsoft-teams"              # Microsoft Teams
+cask "steam"                        # steam
+
+#### MACOS APPS
+cask "iina"                         # modern media player
 # cask "raycast"                      # spotlight alternative
 cask "rectangle"                    # drag / drop window docking
 cask "shottr"                       # Screenshot tool
-cask "steam"                        # steam
-# cask "ultimaker-cura"               # 3D printing slicer
+
+#### VIRTUALISATION / CONTAINERISATION
+cask "docker"                       # Docker binary and desktop
+# brew "qemu"                         # machine emulator and virtualizer
 # cask "utm"                          # UI for qemu
-cask "visual-studio-code"           # vscode
 # cask "xquartz"                      # XQuartz - X11
                                       # $ defaults write org.xquartz.X11 nolisten_tcp 0; # Allow Connections from Network Clients
                                       # $ open -a /Applications/Utilities/XQuartz.app/
                                       # Docker Args: -e DISPLAY="$(localip)":0 -e XAUTHORITY=/.Xauthority -v ~/.Xauthority:/.Xauthority
+
+#### 3D PRINTING
+# cask "freecad"                      # 3D CAD
+# cask "ultimaker-cura"               # 3D printing slicer

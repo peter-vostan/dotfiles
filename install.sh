@@ -118,7 +118,7 @@ if gum confirm "Configure git?"; then
     git config --global push.autoSetupRemote true
 
     git config --global alias.hack '!bash -c "shopt -s expand_aliases; . ~/.aliases && . ~/.functions && git-hack $@"'
-    git config --global alias.sync '!bash -c "shopt -s expand_aliases; . ~/.aliases && . ~/.functions && git-sync"'
+    git config --global alias.stash-all '!bash -c ". ~/.functions && git-stash-all"'
     git config --global alias.prune-branches '!bash -c "shopt -s expand_aliases; . ~/.aliases && . ~/.functions && git-prune-branches"'
 
     echo ''

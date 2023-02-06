@@ -2,8 +2,14 @@
 
 mkd () { mkdir -p "$@" && cd "$_" || exit; }
 
+git-stash-all() {
+	[ "$(git status --short | wc -l)" -eq 0 ] && return 0
+	git add -A
+	git stash
+}
+
 git-hack () {
-	local parent branch_name
+	local parent branch_name stashed_changes
 
 	branch_name="$1"
 	[ -z "${branch_name}" ] && return 1
@@ -16,38 +22,12 @@ git-hack () {
 		parent=$(git-branch-choose)
 	[ -z "${parent}" ] && return 1
 
-	git add -A
-	git stash
+	git-stash-all && stashed_changes="true"
 	git checkout "${parent}"
 	git pull
 	git branch "${branch_name}" "${parent}"
 	git checkout "${branch_name}"
-	git stash pop
-}
-
-git-sync () {
-	local parent branch_name
-
-	branch_name=$(git rev-parse --abbrev-ref HEAD)
-	[ -z "${branch_name}" ] && return 1
-
-	gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
-
-	parent=$(git-branch-parent)
-	! gum confirm "Pull from ${parent}?" && \
-		echo 'Select parent branch' && \
-		parent=$(git-branch-choose)
-	[ -z "${parent}" ] && return 1
-
-	git add -A
-	git stash
-	git checkout "${parent}"
-	git pull
-	git checkout "${branch_name}"
-	git pull
-	git merge --no-edit "${parent}"
-	git push
-	git stash pop
+	[ "${stashed_changes}" = "true" ] && git stash pop
 }
 
 git-prune-branches () {

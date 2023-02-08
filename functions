@@ -127,3 +127,33 @@ aws-info () {
 	aws iam list-account-aliases | jq -r '."AccountAliases" | join(",")'
 	aws sts get-caller-identity | jq .
 }
+
+ai-ask () { openai "$*"; }
+ai-code () {
+	openai "$1. Provide only $2 as output." | bat --color=always --style="plain" --paging=never --language="$3";
+}
+ai-sh () { ai-code "$*" "shell command" sh; }
+ai-js () { ai-code "$*" "javascript code" js; }
+ai-ts () { ai-code "$*" "typescript code" ts; }
+ai-rs () { ai-code "$*" "rust code" rs; }
+
+openai () {
+	local api_key api_key_path=~/.config/openai/api_key.txt response
+	local prompt="$1"
+	local model="text-davinci-003"
+	local max_tokens=2048
+
+	if ! [ -f "${api_key_path}" ]; then
+		! [ -d "${api_key_path:h}" ] && mkdir -p "${api_key_path:h}"
+		gum input --prompt "API Key: " --placeholder "sk-" > "${api_key_path}"
+	fi
+	api_key=$(cat "${api_key_path}")
+
+	response=$(gum spin --spinner points --title "Waiting for response" --show-output -- \
+		curl -s -X POST https://api.openai.com/v1/completions \
+			-H 'Content-Type: application/json' \
+			-H "Authorization: Bearer ${api_key}" \
+			-d "{ \"prompt\": \"${prompt}\", \"model\": \"${model}\", \"max_tokens\": ${max_tokens} }"
+	)
+	printf '%s' "${response}" | jq -r '.choices[0].text' | tr -s '\n'
+}

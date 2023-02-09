@@ -85,8 +85,7 @@ mkdir -p ~/.config;
     symlink "$PWD"/starship.toml ~/.config/starship.toml
 
 mkdir -p ~/.config/kitty;
-    symlink "$PWD"/kitty.conf      ~/.config/kitty/kitty.conf;
-    symlink "$PWD"/kitty-themes    ~/.config/kitty/themes;
+    symlink "$PWD"/kitty.conf ~/.config/kitty/kitty.conf;
 
 mkdir -p ~/.config/navi;
     symlink "$PWD"/navi.yml ~/.config/navi/config.yml

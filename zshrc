@@ -54,13 +54,13 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview '
     if   [[ -d ${realpath} ]]; then
         lsd -l --color always --blocks size,name "${realpath}";
     elif which ${word} > /dev/null; then
-        (out=$(man "$word") 2>/dev/null && echo $out | bat -l man --color=always --style="plain") ||
+        (out=$(man "$word") 2>/dev/null && echo $out | bat -l man --color=always --style=plain) ||
         (out=$(which "$word") && echo $out) ||
         echo "${(P)word}";
     elif [[ -f ${realpath} ]]; then
         case "${realpath:l}" in
             (*.tar|*.tar.*|*.tgz|*.zip) tar -tvf "${realpath}" ;;
-            (*) bat --color=always --style="plain" "${realpath}" ;;
+            (*) bat --color=always --style=plain "${realpath}" ;;
         esac
     else
         echo "${desc}";

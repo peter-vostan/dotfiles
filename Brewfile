@@ -8,7 +8,7 @@ brew "bat"                          # cat but with formatting
 brew "fd"                           # find alternative
 cask "font-fira-code-nerd-font"     # nerd font
 brew "fzf"                          # Fuzzy finder
-cask "kitty"                        # kitty terminal
+cask "iterm2"                       # iterm2 terminal emulator
 brew "lsd"                          # Clone of ls with colorful output, file type icons, and more
 brew "navi"                         # Interactive cheatsheet tool
 brew "starship"                     # Starship prompt

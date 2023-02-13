@@ -46,6 +46,7 @@ symlink "$PWD"/Brewfile ~/.Brewfile
 symlink "$PWD"/condarc ~/.condarc
 symlink "$PWD"/functions ~/.functions
 symlink "$PWD"/gitignore_global ~/.gitignore_global
+symlink "$PWD"/iterm2.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
 symlink "$PWD"/zprofile ~/.zprofile
 symlink "$PWD"/zshrc ~/.zshrc
 symlink "$PWD"/zshenv ~/.zshenv
@@ -55,9 +56,6 @@ rm -rf ~/.oh-my-zsh/custom/plugins;
 
 mkdir -p ~/.config;
     symlink "$PWD"/starship.toml ~/.config/starship.toml
-
-mkdir -p ~/.config/kitty;
-    symlink "$PWD"/kitty.conf ~/.config/kitty/kitty.conf;
 
 mkdir -p ~/.config/navi;
     symlink "$PWD"/navi.yml ~/.config/navi/config.yml
@@ -110,12 +108,6 @@ fi
 
 # OS specific config
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    if ! [ -f ~/.terminfo/78/xterm-kitty ]; then
-        echo 'Installing kitty terminfo'
-        tic -x -o ~/.terminfo /Applications/kitty.app/Contents/Resources/kitty/terminfo/kitty.terminfo
-        echo ''
-    fi
-
     # Enable sudo touch id auth if it isn't already
     if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null && gum confirm "Enable sudo touch id?"; then
         echo 'Enabling sudo touch id'
@@ -132,9 +124,9 @@ auth       sufficient     pam_tid.so
         defaults write com.apple.dock "tilesize" -int 36
         defaults write com.apple.dock "show-recents" -bool false
         # defaults write com.apple.dock "orientation" left
-        defaults write com.apple.dock "autohide" -bool true
-        defaults write com.apple.dock "autohide-delay" -float "0"
-        defaults write com.apple.dock "autohide-time-modifier" -float "0"
+        # defaults write com.apple.dock "autohide" -bool true
+        # defaults write com.apple.dock "autohide-delay" -float "0"
+        # defaults write com.apple.dock "autohide-time-modifier" -float "0"
 
         defaults write com.apple.finder "ShowPathbar" -bool true
         defaults write com.apple.finder "ShowStatusbar" -bool true

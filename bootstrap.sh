@@ -46,13 +46,9 @@ symlink "$PWD"/Brewfile ~/.Brewfile
 symlink "$PWD"/condarc ~/.condarc
 symlink "$PWD"/functions ~/.functions
 symlink "$PWD"/gitignore_global ~/.gitignore_global
-symlink "$PWD"/iterm2.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
 symlink "$PWD"/zprofile ~/.zprofile
 symlink "$PWD"/zshrc ~/.zshrc
 symlink "$PWD"/zshenv ~/.zshenv
-
-rm -rf ~/.oh-my-zsh/custom/plugins;
-    symlink "$PWD"/omz-plugins ~/.oh-my-zsh/custom/plugins
 
 mkdir -p ~/.config;
     symlink "$PWD"/starship.toml ~/.config/starship.toml
@@ -62,6 +58,12 @@ mkdir -p ~/.config/navi;
 
 mkdir -p ~/.config/nix;
     symlink "$PWD"/nix.conf ~/.config/nix/nix.conf
+
+mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles;
+    symlink "$PWD"/iterm2.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
+
+rm -rf ~/.oh-my-zsh/custom/plugins;
+    symlink "$PWD"/omz-plugins ~/.oh-my-zsh/custom/plugins
 
 echo ''
 echo '-- BREW'

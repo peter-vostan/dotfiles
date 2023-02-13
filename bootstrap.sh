@@ -4,33 +4,7 @@ set -e
 
 function symlink() {
     echo "${2} -> ${1}"
-    ln -snf "${1}" "${2}"
-}
-
-function enableSudoTouchId() {
-    if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null && gum confirm "Enable sudo touch id?"; then
-        echo 'Enabling sudo touch id'
-        sudo sed -i '' '1a\
-auth       sufficient     pam_tid.so
-        ' /etc/pam.d/sudo
-    fi
-}
-
-function installOhMyZshCustomPlugin() {
-    local directory="${HOME}/.oh-my-zsh/custom/plugins/${1}"
-    if ! [ -d "${directory}" ]; then
-        echo ''
-        echo "---- Installing ${1}"
-        echo ''
-        git clone "${2}" "${directory}"
-    else
-        git -C "${directory}" fetch
-        local local_commit; local_commit=$(git -C "${directory}" rev-parse @)
-        local upstream_commit; upstream_commit=$(git -C "${directory}" rev-parse "@{u}")
-        if ! [ "${local_commit}" = "${upstream_commit}" ] && gum confirm "Update ${1}?"; then
-            git -C "${directory}" pull
-        fi
-    fi
+    ln -snfF "${1}" "${2}"
 }
 
 echo ''
@@ -63,11 +37,6 @@ if ! [ -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-installOhMyZshCustomPlugin fzf-tab https://github.com/Aloxaf/fzf-tab.git
-installOhMyZshCustomPlugin zsh-completions https://github.com/zsh-users/zsh-completions.git       # TODO: This doesn't support flakes...
-installOhMyZshCustomPlugin zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions.git
-installOhMyZshCustomPlugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
-
 echo ''
 echo '-- CREATING SYMLINKS'
 echo ''
@@ -80,6 +49,9 @@ symlink "$PWD"/gitignore_global ~/.gitignore_global
 symlink "$PWD"/zprofile ~/.zprofile
 symlink "$PWD"/zshrc ~/.zshrc
 symlink "$PWD"/zshenv ~/.zshenv
+
+rm -rf ~/.oh-my-zsh/custom/plugins;
+    symlink "$PWD"/omz-plugins ~/.oh-my-zsh/custom/plugins
 
 mkdir -p ~/.config;
     symlink "$PWD"/starship.toml ~/.config/starship.toml
@@ -145,7 +117,12 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 
     # Enable sudo touch id auth if it isn't already
-    enableSudoTouchId
+    if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null && gum confirm "Enable sudo touch id?"; then
+        echo 'Enabling sudo touch id'
+        sudo sed -i '' '1a\
+auth       sufficient     pam_tid.so
+        ' /etc/pam.d/sudo
+    fi
 
     if gum confirm "Configure Macos Preferences?"; then
         # https://macos-defaults.com/
@@ -178,9 +155,3 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         killall Dock
     fi
 fi
-
-echo 'Manual actions'
-echo ' - Install Bitwarden / Tailscale from App Store'
-echo ' - Login to vscode settings sync'
-echo ' - Install navi default and tldr repo'
-echo ' - Setup Kitty opt+space shortcut key (via Shortcuts.app)'

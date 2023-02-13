@@ -38,6 +38,7 @@ brew "azure-cli"                    # Azure cli
 cask "drawio"                       # drawio app
 brew "fnm"                          # faster nvm
 brew "git"                          # Git
+brew "gh"                           # Github cli
 cask "miniconda"                    # Environment management for python
 # cask "ngrok"                        # Reverse proxy, secure introspectable tunnels to localhost
 # brew "terraform"                    # Terraform

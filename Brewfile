@@ -26,6 +26,7 @@ brew "ripgrep"                      # better version of grep
 brew "socat"                        # Socket CAT: netcat on steroids
 brew "vhs"                          # Terminal recorder
 brew "websocat"                     # CLI for WebSockets
+brew "xxh"                          # Bring your favorite shell wherever you go through the ssh (try with $ xxh +I xxh-plugin-zsh-ohmyzsh && source xxh.zsh myhost)
 
 #### BROWSERS
 cask "firefox"                      # firefox browser

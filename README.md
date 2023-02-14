@@ -15,14 +15,14 @@ Bootstrap
 - [OPTIONAL] configures OS
 
 ```sh
-./bootstrap.sh                          # follow the prompts
+./bootstrap.sh                 # follow the prompts
 ```
 
 ```sh
-brew bundle check --global              # check for new brew dependencies
-brew bundle install --global            # install new brew dependencies
-brew bundle cleanup --global            # check for removed brew dependencies
-brew bundle cleanup --global --force    # uninstall removed brew dependencies
+brew bundle check              # check for new brew dependencies
+brew bundle install            # install new brew dependencies
+brew bundle cleanup            # check for removed brew dependencies
+brew bundle cleanup --force    # uninstall removed brew dependencies
 
-git submodule update --remote           # pull submodule updates
+git submodule update --remote  # pull submodule updates
 ```

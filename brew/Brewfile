@@ -3,6 +3,8 @@ tap "homebrew/core"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 
+file "./#{`hostname -s`.strip}.Brewfile"
+
 #### TERMINAL SETUP DEPENDENCIES
 brew "bat"                          # cat but with formatting
 brew "fd"                           # find alternative
@@ -17,7 +19,6 @@ brew "starship"                     # Starship prompt
 brew "bottom"                       # alternative to htop
 brew "broot"                        # New way to see and navigate directory trees
 brew "curl"                         # curl - installing for the completions which are missing from macos
-brew "direnv"                       # directory environment loader with nix support
 brew "ffmpeg"                       # Play, record, convert, and stream audio and video
 brew "gum"                          # Tool for creating interactive scripts
 brew "htop"                         # Realtime info on running processes
@@ -44,17 +45,6 @@ cask "miniconda"                    # Environment management for python
 # cask "ngrok"                        # Reverse proxy, secure introspectable tunnels to localhost
 # brew "terraform"                    # Terraform
 cask "visual-studio-code"           # vscode
-
-#### GENERAL APPS
-cask "messenger"                    # Facebook messenger
-cask "microsoft-teams"              # Microsoft Teams
-cask "steam"                        # steam
-
-#### MACOS APPS
-cask "iina"                         # modern media player
-# cask "raycast"                      # spotlight alternative
-cask "rectangle"                    # drag / drop window docking
-cask "shottr"                       # Screenshot tool
 
 #### VIRTUALISATION / CONTAINERISATION
 cask "docker"                       # Docker binary and desktop

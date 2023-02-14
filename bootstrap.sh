@@ -22,11 +22,6 @@ if ! brew list gum > /dev/null; then
     brew install gum
 fi
 
-if ! which nix > /dev/null && gum confirm "Install nix?"; then
-    echo 'Installing nix'
-    sh <(curl -L https://nixos.org/nix/install)
-fi
-
 if ! which rustup > /dev/null && gum confirm "Install rust?"; then
     echo 'Installing rust'
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -41,43 +36,27 @@ echo ''
 echo '-- CREATING SYMLINKS'
 echo ''
 
-symlink "$PWD"/aliases ~/.aliases
-symlink "$PWD"/Brewfile ~/.Brewfile
-symlink "$PWD"/condarc ~/.condarc
-symlink "$PWD"/functions ~/.functions
 symlink "$PWD"/gitignore_global ~/.gitignore_global
 symlink "$PWD"/zprofile ~/.zprofile
 symlink "$PWD"/zshrc ~/.zshrc
 symlink "$PWD"/zshenv ~/.zshenv
 
-mkdir -p ~/.config;
-    symlink "$PWD"/starship.toml ~/.config/starship.toml
-
-mkdir -p ~/.config/navi;
-    symlink "$PWD"/navi.yml ~/.config/navi/config.yml
-
-mkdir -p ~/.config/nix;
-    symlink "$PWD"/nix.conf ~/.config/nix/nix.conf
-
 mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles;
     symlink "$PWD"/iterm2.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
-
-rm -rf ~/.oh-my-zsh/custom/plugins;
-    symlink "$PWD"/omz-plugins ~/.oh-my-zsh/custom/plugins
 
 echo ''
 echo '-- BREW'
 echo ''
 
-! brew bundle check --global -v && \
-    gum confirm "Run \`brew bundle install --global\`?" && \
-    brew bundle install --global
+! brew bundle check -v && \
+    gum confirm "Run \`brew bundle install\`?" && \
+    brew bundle install
 
-if brew bundle cleanup --global | grep 'Would uninstall' > /dev/null; then
+if brew bundle cleanup | grep 'Would uninstall' > /dev/null; then
     echo ''
-    brew bundle cleanup --global
-    gum confirm "Run \`brew bundle cleanup --global --force\`?" && \
-        brew bundle cleanup --global --force
+    brew bundle cleanup
+    gum confirm "Run \`brew bundle cleanup --force\`?" && \
+        brew bundle cleanup --force
 fi
 
 echo ''

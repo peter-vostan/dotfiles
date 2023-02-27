@@ -24,6 +24,8 @@ export ZSH_DOTENV_FILE=".env"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=240'
 # export ENABLE_CORRECTION="true"
 
+export ITERM2_SQUELCH_MARK=1 # disable iterm2_zsh_integration from automatically adding the prompt marks, we can configure this in starship instead
+
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
 eval "$(direnv hook zsh)"
@@ -38,6 +40,7 @@ plugins=(dotenv extract rust timer urltools
 . ~/.oh-my-zsh/oh-my-zsh.sh
 . "${DOTFILES}/aliases"
 . "${DOTFILES}/functions"
+. "${DOTFILES}/iterm2/zsh_integration"
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:descriptions' format '[%d]'

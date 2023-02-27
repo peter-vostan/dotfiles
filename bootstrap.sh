@@ -42,7 +42,7 @@ symlink "$PWD"/zshrc ~/.zshrc
 symlink "$PWD"/zshenv ~/.zshenv
 
 mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles;
-    symlink "$PWD"/iterm2.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
+    symlink "$PWD"/iterm2/profiles.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
 
 echo ''
 echo '-- BREW'

@@ -29,7 +29,6 @@ export ITERM2_SQUELCH_MARK=1 # disable iterm2_zsh_integration from automatically
 
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
-eval "$(direnv hook zsh)"
 eval "$(conda shell.zsh hook)"
 eval "$(navi widget zsh)"       # ⌃G to open widget
 

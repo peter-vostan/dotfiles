@@ -6,7 +6,8 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"        # Use ba
 export BAT_THEME="ansi"
 
 export DOTFILES="${HOME}/dotfiles"
-export HOMEBREW_BUNDLE_FILE="${DOTFILES}/brew/Brewfile"
+export HOMEBREW_BUNDLE_DIR="${DOTFILES}/brew"
+export HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_DIR}/Brewfile"
 export NAVI_CONFIG="${DOTFILES}/navi/config.yml"
 export ZSH_CUSTOM="${DOTFILES}/omz"
 export STARSHIP_CONFIG="${DOTFILES}/starship.toml"

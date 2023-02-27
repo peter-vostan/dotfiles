@@ -4,8 +4,8 @@
 format = '${custom.iterm2_mark}$all'
 
 [character]
-success_symbol = '[ 󱞩]()'
-error_symbol = '[ 󱞩](red)'
+success_symbol = '[ ↳]()'
+error_symbol = '[ ↳](red)'
 
 # [line_break]
 # disabled = true

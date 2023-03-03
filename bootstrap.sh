@@ -67,9 +67,9 @@ if gum confirm "Configure git?"; then
     git config --global core.excludesfile ~/.gitignore_global
     git config --global push.autoSetupRemote true
 
-    git config --global alias.hack '!bash -c "shopt -s expand_aliases; . ~/.aliases && . ~/.functions && git-hack $@"'
-    git config --global alias.stash-all '!bash -c ". ~/.functions && git-stash-all"'
-    git config --global alias.prune-branches '!bash -c "shopt -s expand_aliases; . ~/.aliases && . ~/.functions && git-prune-branches"'
+    git config --global alias.hack "!bash -c \"shopt -s expand_aliases; . ${DOTFILES}/aliases && . ${DOTFILES}/functions && git-hack \$@\""
+    git config --global alias.stash-all "!bash -c \". ${DOTFILES}/functions && git-stash-all\""
+    git config --global alias.prune-branches "!bash -c \"shopt -s expand_aliases; . ${DOTFILES}/aliases && . ${DOTFILES}/functions && git-prune-branches\""
 
     echo ''
     echo 'Git user.name'

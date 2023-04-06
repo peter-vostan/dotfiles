@@ -11,7 +11,6 @@ export HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_DIR}/Brewfile"
 export NAVI_CONFIG="${DOTFILES}/navi/config.yml"
 export ZSH_CUSTOM="${DOTFILES}/omz"
 export STARSHIP_CONFIG="${DOTFILES}/starship.toml"
-export CONDARC="${DOTFILES}/condarc"
 
 export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"       # Brew completions
 export FPATH="$ZSH_CUSTOM/plugins/zsh-completions/src${FPATH:+:$FPATH}" # https://github.com/zsh-users/zsh-completions/issues/603
@@ -29,7 +28,6 @@ export ITERM2_SQUELCH_MARK=1 # disable iterm2_zsh_integration from automatically
 
 eval "$(starship init zsh)"
 eval "$(fnm env --use-on-cd)"
-eval "$(conda shell.zsh hook)"
 eval "$(navi widget zsh)"       # ⌃G to open widget
 
 unsetopt beep

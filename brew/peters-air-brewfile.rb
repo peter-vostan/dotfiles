@@ -1,5 +1,9 @@
 # cask "android-studio"               # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
+brew "awscli"
+brew "azure-cli"
 cask "discord"
+cask "firefox"
+cask "google-chrome"
 cask "iina"
 cask "messenger"
 cask "microsoft-teams"

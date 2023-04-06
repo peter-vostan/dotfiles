@@ -89,14 +89,6 @@ fi
 
 # OS specific config
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # Enable sudo touch id auth if it isn't already
-    if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null && gum confirm "Enable sudo touch id?"; then
-        echo 'Enabling sudo touch id'
-        sudo sed -i '' '1a\
-auth       sufficient     pam_tid.so
-        ' /etc/pam.d/sudo
-    fi
-
     if gum confirm "Configure Macos Preferences?"; then
         # https://macos-defaults.com/
         # https://github.com/mathiasbynens/dotfiles/blob/main/.macos

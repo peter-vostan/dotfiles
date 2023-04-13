@@ -12,6 +12,7 @@ cask "microsoft-teams"
 cask "rectangle"
 cask "shottr"
 cask "steam"
+cask "vpn-by-google-one"
 
 #### VIRTUALISATION / CONTAINERISATION
 # cask "docker"                       # Docker binary and desktop

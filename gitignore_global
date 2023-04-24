@@ -1,5 +1,4 @@
-# OS generated files #
-######################
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -10,3 +9,7 @@ Thumbs.db
 
 # drawio temp files
 .$*
+
+# local ideas / notes
+.idea
+.notes

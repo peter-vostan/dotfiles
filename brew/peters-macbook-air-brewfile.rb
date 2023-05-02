@@ -1,6 +1,9 @@
+tap "azure/functions"
+
 # cask "android-studio"               # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
 brew "awscli"
 brew "azure-cli"
+brew "azure-functions-core-tools@4"   # Azure Functions Core Tools 4.0.0
 cask "discord"
 cask "firefox"
 cask "google-chrome"

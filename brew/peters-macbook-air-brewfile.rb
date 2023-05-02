@@ -5,10 +5,11 @@ brew "awscli"
 brew "azure-cli"
 brew "azure-functions-core-tools@4"   # Azure Functions Core Tools 4.0.0
 cask "discord"
-cask "firefox"
-cask "google-chrome"
+# cask "firefox"
+# cask "google-chrome"
 cask "iina"
 cask "messenger"
+cask "microsoft-edge"
 cask "microsoft-teams"
 # cask "ngrok"                        # Reverse proxy, secure introspectable tunnels to localhost
 # cask "raycast"                      # spotlight alternative

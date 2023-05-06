@@ -66,6 +66,7 @@ echo ''
 if gum confirm "Configure git?"; then
     git config --global core.excludesfile ~/.gitignore_global
     git config --global push.autoSetupRemote true
+    git config --global pull.rebase false
 
     git config --global alias.hack "!bash -c \"shopt -s expand_aliases; . ${DOTFILES}/aliases && . ${DOTFILES}/functions && git-hack \$@\""
     git config --global alias.stash-all "!bash -c \". ${DOTFILES}/functions && git-stash-all\""

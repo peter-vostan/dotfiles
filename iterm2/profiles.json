@@ -10,7 +10,7 @@
             "Columns": 120,
             "Scrollback Lines": 10000,
             "Terminal Type": "xterm-256color",
-            "Normal Font": "JetBrainsMonoNerdFontComplete-Regular 12",
+            "Normal Font": "JetBrainsMonoNFM-Regular 13",
             "ASCII Anti Aliased": true,
             "ASCII Ligatures": false,
             "Silence Bell": true,

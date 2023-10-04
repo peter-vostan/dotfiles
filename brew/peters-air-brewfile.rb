@@ -1,13 +1,13 @@
 tap "azure/functions"
 
-cask "android-studio"                 # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
+# cask "android-studio"                 # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
 brew "awscli"
 brew "azure-cli"
 brew "azure-functions-core-tools@4"   # Azure Functions Core Tools 4.0.0
-cask "discord"
-cask "firefox"
+# cask "discord"
+# cask "firefox"
 cask "google-chrome"
-cask "iina"
+# cask "iina"
 cask "messenger"
 cask "microsoft-edge"
 cask "microsoft-teams"
@@ -15,7 +15,10 @@ cask "microsoft-teams"
 # cask "raycast"                      # spotlight alternative
 cask "rectangle"
 cask "shottr"
-cask "steam"
+# cask "steam"
+cask "stremio"
+brew "terraform"
+# brew "vhs"                          # Terminal recorder
 cask "vpn-by-google-one"
 
 #### VIRTUALISATION / CONTAINERISATION

@@ -17,13 +17,6 @@ git-prune-branches () {
 	fi
 }
 
-batgrep () {
-	rg --line-number --no-heading --color=always --smart-case "$@" |
-		fzf -d ':' -n 2.. --ansi --no-sort \
-			--preview-window="up,60%,border-bottom,+{2}+3/3" \
-			--preview 'bat --style=numbers --color=always --highlight-line {2} {1}';
-}
-
 # Required for broot
 br() {
     local cmd cmd_file code

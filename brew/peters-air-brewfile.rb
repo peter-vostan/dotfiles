@@ -1,9 +1,6 @@
-tap "azure/functions"
-
 # cask "android-studio"                 # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
 brew "awscli"
 brew "azure-cli"
-brew "azure-functions-core-tools@4"   # Azure Functions Core Tools 4.0.0
 # cask "discord"
 # cask "firefox"
 cask "google-chrome"
@@ -20,6 +17,12 @@ cask "stremio"
 brew "terraform"
 # brew "vhs"                          # Terminal recorder
 cask "vpn-by-google-one"
+
+#### TF
+tap "azure/functions"
+brew "azure-functions-core-tools@4"
+tap "stripe/stripe-cli"
+brew "stripe"
 
 #### VIRTUALISATION / CONTAINERISATION
 # cask "docker"                       # Docker binary and desktop

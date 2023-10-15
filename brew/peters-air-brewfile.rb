@@ -1,8 +1,7 @@
-# cask "android-studio"                 # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
 brew "awscli"
 brew "azure-cli"
 # cask "discord"
-# cask "firefox"
+cask "firefox"
 cask "google-chrome"
 # cask "iina"
 cask "messenger"
@@ -23,6 +22,7 @@ tap "azure/functions"
 brew "azure-functions-core-tools@4"
 tap "stripe/stripe-cli"
 brew "stripe"
+cask "android-studio"                 # Android Studio (~/Library/Android/sdk/platform-tools/adb, ~/Library/Android/sdk/emulator/emulator)
 
 #### VIRTUALISATION / CONTAINERISATION
 # cask "docker"                       # Docker binary and desktop

@@ -33,5 +33,6 @@ brew "websocat"                     # CLI for WebSockets
 cask "drawio"                       # drawio app
 brew "fnm"                          # faster nvm
 brew "git"                          # Git
+brew "mkcert"                       # Create trusted development certificates
 brew "poetry"                       # Dependancy management for Python
 cask "visual-studio-code"           # vscode

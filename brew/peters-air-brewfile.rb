@@ -10,7 +10,6 @@ cask "microsoft-teams"
 # cask "ngrok"                        # Reverse proxy, secure introspectable tunnels to localhost
 # cask "raycast"                      # spotlight alternative
 cask "rectangle"
-cask "shottr"
 # cask "steam"
 cask "stremio"
 brew "terraform"

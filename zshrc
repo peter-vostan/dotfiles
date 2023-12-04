@@ -6,13 +6,16 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p --paging=never'"        # Use ba
 export BAT_THEME="ansi"
 
 export DOTFILES="${HOME}/dotfiles"
-export HOMEBREW_BUNDLE_DIR="${DOTFILES}/brew"
-export HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_DIR}/Brewfile"
 export NAVI_CONFIG="${DOTFILES}/navi/config.yml"
 export ZSH_CUSTOM="${DOTFILES}/omz"
 export STARSHIP_CONFIG="${DOTFILES}/starship.toml"
 
-export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"       # Brew completions
+if which brew > /dev/null; then
+    export HOMEBREW_BUNDLE_DIR="${DOTFILES}/brew"
+    export HOMEBREW_BUNDLE_FILE="${HOMEBREW_BUNDLE_DIR}/Brewfile"
+    export FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"       # Brew completions
+fi
+
 export FPATH="$ZSH_CUSTOM/plugins/zsh-completions/src${FPATH:+:$FPATH}" # https://github.com/zsh-users/zsh-completions/issues/603
 
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
@@ -33,7 +36,7 @@ eval "$(navi widget zsh)"       # ⌃G to open widget
 unsetopt beep
 
 plugins=(dotenv extract rust timer urltools
-    fzf fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
+    fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 . ~/.oh-my-zsh/oh-my-zsh.sh
 . "${DOTFILES}/aliases"

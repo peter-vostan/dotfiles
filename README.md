@@ -26,3 +26,13 @@ brew bundle cleanup --force    # uninstall removed brew dependencies
 
 git submodule update --remote  # pull submodule updates
 ```
+
+## Virtual Machines
+
+For macos keyboard compatibility inside of linux and windows vm's, install kinto (<https://github.com/rbreaves/kinto>)
+
+`/bin/bash -c "$(wget -qO- https://raw.githubusercontent.com/rbreaves/kinto/HEAD/install/linux.sh || curl -fsSL https://raw.githubusercontent.com/rbreaves/kinto/HEAD/install/linux.sh)"`
+
+> Not compatible with Wayland
+
+> May need to disable default keybindings in virtualization software like Parallels

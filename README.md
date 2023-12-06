@@ -1,38 +1,74 @@
 # dotfiles
 
-Init submodules (used for omz plugins and navi cheats)
+Home Manager Docs: <https://rycee.gitlab.io/home-manager/options.html>
+
+Nix Darwin Docs: <https://daiderd.com/nix-darwin/manual/index.html>
+
+## Nix Installation
 
 ```sh
-git submodule init
-git submodule update
+# install nix
+sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
-Bootstrap
-
-- checks / installs dependencies
-- creates symlinks for dotfiles
-- [OPTIONAL] configures git
-- [OPTIONAL] configures OS
+## MacOS
 
 ```sh
-./bootstrap.sh                 # follow the prompts
+# Install homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# add home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+
+# add nix-darwin
+nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
+./result/bin/darwin-installer # N to editing the default config, Y to managing darwin with nix-channel
+
+# Apply config in MacOS
+darwin-rebuild switch -I darwin-config=profiles/darwin-XXXX.nix
+
+# Add iterm2 profile to the DynamicProfiles directory (if not already done)
+mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
+ln -snfF ~/dotfiles/iterm2-profiles.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
 ```
+
+## Linux
 
 ```sh
-brew bundle check              # check for new brew dependencies
-brew bundle install            # install new brew dependencies
-brew bundle cleanup            # check for removed brew dependencies
-brew bundle cleanup --force    # uninstall removed brew dependencies
+# add home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
 
-git submodule update --remote  # pull submodule updates
+# Apply config in linux
+home-manager switch -f profiles/linux-XXXX.nix
+
+# Update login shell (if required)
+zsh
+echo "$(which zsh)" | sudo tee -a /etc/shells
+chsh -s "$(which zsh)"
+logout
 ```
 
-## Virtual Machines
+If using a virtual machine on a macbook, use kinto.sh to setup better keyboard compatibility
 
-For macos keyboard compatibility inside of linux and windows vm's, install kinto (<https://github.com/rbreaves/kinto>)
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rbreaves/kinto/HEAD/install/linux.sh)"
+# Not compatible with Wayland
+# May need to disable default keybindings in virtualization software like Parallels
+```
 
-`/bin/bash -c "$(wget -qO- https://raw.githubusercontent.com/rbreaves/kinto/HEAD/install/linux.sh || curl -fsSL https://raw.githubusercontent.com/rbreaves/kinto/HEAD/install/linux.sh)"`
+## Other
 
-> Not compatible with Wayland
+If custom ca certificates are being used
 
-> May need to disable default keybindings in virtualization software like Parallels
+```sh
+# Create ca_bundle
+security export -t certs -f pemseq -k /Library/Keychains/System.keychain -o /tmp/certs-system.pem
+security export -t certs -f pemseq -k /System/Library/Keychains/SystemRootCertificates.keychain -o /tmp/certs-root.pem
+cat /tmp/certs-root.pem /tmp/certs-system.pem > /tmp/ca_bundle.pem
+
+# Copy ca bundle and update nix.conf
+sudo cp /tmp/ca_bundle.pem /etc/nix/
+echo "ssl-cert-file = /etc/nix/ca_bundle.pem" | sudo tee -a /etc/nix/nix.conf
+```

@@ -15,7 +15,6 @@
 
   home-manager.users.peter = { pkgs, ... }: {
     imports = [ ../home-manager/common.nix ];
-    programs.zsh.profileExtra = "eval \"$(/opt/homebrew/bin/brew shellenv)\"";
     home.stateVersion = "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
   };
 

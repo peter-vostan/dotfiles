@@ -3,7 +3,7 @@
 {
   programs.zsh = {
     enable = true;
-    enableCompletion = true; # TODO: something like environment.pathsToLink = [ "/share/zsh" ]; will also be needed for the system packages
+    enableCompletion = true;
     autocd = true;
     plugins = [
       {
@@ -48,34 +48,12 @@
       [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
     initExtra = ''
-      git-prune-branches () {
-        local branches
-        gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
-        echo "Branches"
-        git --no-pager branch -vv
-        echo ""
-        branches=$(git branch -vv | grep gone | awk "{print $1}")
-        if [[ "''${branches}" ]]; then
-          echo "Dangling branches found"
-          echo "''${branches}" | gum choose --no-limit | xargs git branch -D
-        else
-          echo "No dangling branches found"
-        fi
-      }
+      . ~/.functions
 
-      enable-sudo-touch-id () {
-        if [[ "$OSTYPE" == "darwin"* ]]; then
-          if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null; then
-            sudo sed -i "" "1a\
-      auth       sufficient     pam_tid.so
-            " /etc/pam.d/sudo
-          else
-            echo "Already enabled"
-          fi
-        else
-          echo "Unsupported OS Type '$OSTYPE'"
-        fi
-      }
+      bindkey "\e[1;5C" forward-word
+      bindkey "\e[1;5D" backward-word
+      bindkey "\e[H" beginning-of-line
+      bindkey "\e[F" end-of-line
 
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       zstyle ':completion:*:descriptions' format '[%d]'

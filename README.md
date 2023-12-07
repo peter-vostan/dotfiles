@@ -4,14 +4,25 @@ Home Manager Docs: <https://rycee.gitlab.io/home-manager/options.html>
 
 Nix Darwin Docs: <https://daiderd.com/nix-darwin/manual/index.html>
 
-## Nix Installation
+## Installation
 
 ```sh
 # install nix
 sh <(curl -L https://nixos.org/nix/install) --daemon
 ```
 
-## MacOS
+Create a `settings.local.nix` file with the following content (update the placeholders)
+
+```nix
+{
+  git.user = {
+    name = "<INSERT NAME>";
+    email = "<INSERT EMAIL>";
+  };
+}
+```
+
+### MacOS
 
 ```sh
 # Install homebrew
@@ -33,7 +44,7 @@ mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
 ln -snfF ~/dotfiles/iterm2-profiles.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
 ```
 
-## Linux
+### Linux
 
 ```sh
 # add home-manager
@@ -56,19 +67,4 @@ If using a virtual machine on a macbook, use kinto.sh to setup better keyboard c
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rbreaves/kinto/HEAD/install/linux.sh)"
 # Not compatible with Wayland
 # May need to disable default keybindings in virtualization software like Parallels
-```
-
-## Other
-
-If custom ca certificates are being used
-
-```sh
-# Create ca_bundle
-security export -t certs -f pemseq -k /Library/Keychains/System.keychain -o /tmp/certs-system.pem
-security export -t certs -f pemseq -k /System/Library/Keychains/SystemRootCertificates.keychain -o /tmp/certs-root.pem
-cat /tmp/certs-root.pem /tmp/certs-system.pem > /tmp/ca_bundle.pem
-
-# Copy ca bundle and update nix.conf
-sudo cp /tmp/ca_bundle.pem /etc/nix/
-echo "ssl-cert-file = /etc/nix/ca_bundle.pem" | sudo tee -a /etc/nix/nix.conf
 ```

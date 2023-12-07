@@ -8,7 +8,6 @@
       format = "$all";
       character.success_symbol = "[↳]()";
       character.error_symbol = "[↳](red)";
-      directory.read_only = " "; # TODO: review this
       git_branch.symbol = " ";
       hostname.ssh_only = true;
       hostname.format = "[\[$hostname\]]($style) "; # Looks better without the symbol

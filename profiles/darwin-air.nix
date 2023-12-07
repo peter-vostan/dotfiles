@@ -5,6 +5,7 @@
 
   system.stateVersion = 4; # Used for backwards compatibility, please read the changelog before changing. ($ darwin-rebuild changelog)
 
+  environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [];
 
   users.users.peter = {

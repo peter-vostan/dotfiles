@@ -11,6 +11,8 @@
     ./zsh.nix
   ];
 
+  home.file.".functions".source = ../functions;
+
   home.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
     bottom curl fd ffmpeg git gum htop jq socat websocat

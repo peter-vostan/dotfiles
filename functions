@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+mkd () { mkdir -p "$@" && cd "$_" || exit; }
+
+git-prune-branches () {
+  local branches
+  gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags
+  echo "Branches"
+  git --no-pager branch -vv
+  echo ""
+  branches=$(git branch -vv | grep gone | awk "{print $1}")
+  if [[ "${branches}" ]]; then
+    echo "Dangling branches found"
+    echo "''${branches}" | gum choose --no-limit | xargs git branch -D
+  else
+    echo "No dangling branches found"
+  fi
+}
+
+enable-sudo-touch-id () {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    if ! grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null; then
+      sudo sed -i "" '1a\
+auth       sufficient     pam_tid.so
+      ' /etc/pam.d/sudo
+    else
+      echo "Already enabled"
+    fi
+  else
+    echo "Unsupported OS Type '$OSTYPE'"
+  fi
+}
+
+# Create a data URL from a file
+dataurl () {
+	local mimeType;
+	mimeType=$(file -b --mime-type "$1");
+	if [[ $mimeType == text/* ]]; then
+		mimeType="${mimeType};charset=utf-8";
+	fi
+	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+}
+
+qr () {
+	local input="$*"
+	[ -z "$input" ] && local input="@/dev/stdin"
+	curl -d "$input" https://qrcode.show
+}
+
+qr-svg () {
+	local input="$*"
+	[ -z "$input" ] && local input="@/dev/stdin"
+	curl -d "${input}" https://qrcode.show -H "Accept: image/svg+xml"
+}
+
+convert-to-gif () {
+	INPUT="$1"
+	FRAMERATE=$(gum input --prompt "Frame rate: " --placeholder "Frame Rate" --value "10")
+	WIDTH=$(gum input --prompt "Width: " --placeholder "Width" --value "1200")
+	MAXCOLORS=$(gum input --prompt "Max Colors: " --placeholder "Max Colors" --value "256")
+
+	BASENAME=$(basename "$INPUT")
+	BASENAME="${BASENAME%%.*}"
+
+	gum spin --spinner points --title "Converting to GIF" -- \
+		ffmpeg -i "$INPUT" -vf "fps=$FRAMERATE,scale=$WIDTH:-1:flags=lanczos,split[s0][s1];[s0]palettegen=max_colors=${MAXCOLORS}[p];[s1][p]paletteuse" "$BASENAME.gif"
+}

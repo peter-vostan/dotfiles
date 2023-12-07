@@ -1,11 +1,15 @@
 { config, pkgs, ... }:
 
+let
+  settings = (import ../settings.local.nix);
+in
 {
   programs.git = {
     enable = true;
+    userName = settings.git.user.name;
+    userEmail = settings.git.user.email;
     aliases = {
-      # TODO: this probably won't work as is. See how the .zshrc and other files are created and refactor from there
-      "prune-branches" = "!bash -c \"shopt -s expand_aliases; . $HOME/aliases && . $HOME/functions && git-prune-branches\"";
+      "prune-branches" = "!bash -c \"source $HOME/.functions && git-prune-branches\"";
     };
     ignores = [
       ".DS_Store" ".DS_Store?" ".Spotlight-V100" ".Trashes" "ehthumbs.db" "Thumbs.db"

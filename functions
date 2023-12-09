@@ -8,10 +8,10 @@ git-prune-branches () {
   echo "Branches"
   git --no-pager branch -vv
   echo ""
-  branches=$(git branch -vv | grep gone | awk "{print $1}")
+  branches=$(git branch -vv | grep gone | awk '{print $1}')
   if [[ "${branches}" ]]; then
     echo "Dangling branches found"
-    echo "''${branches}" | gum choose --no-limit | xargs git branch -D
+    echo "${branches}" | gum choose --no-limit | xargs git branch -D
   else
     echo "No dangling branches found"
   fi

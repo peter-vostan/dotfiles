@@ -26,4 +26,5 @@
   programs.direnv.nix-direnv.enable = true;
   programs.lsd.enable = true;
   programs.lsd.enableAliases = true;
+  programs.lsd.settings.date = "relative";
 }

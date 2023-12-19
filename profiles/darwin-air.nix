@@ -35,6 +35,7 @@
     ];
     casks = [
       "android-studio"
+      "crystalfetch"        # UI for creating Windows installer ISO from UUPDump
       "drawio"
       "firefox"
       "google-chrome"
@@ -44,6 +45,7 @@
       "messenger"
       "rectangle"
       "stremio"
+      "utm"
       "visual-studio-code"
       "vpn-by-google-one"
     ];

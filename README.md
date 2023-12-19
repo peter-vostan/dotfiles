@@ -16,8 +16,8 @@ Create a `settings.local.nix` file with the following content (update the placeh
 ```nix
 {
   git.user = {
-    name = "<INSERT NAME>";
-    email = "<INSERT EMAIL>";
+    name = "";
+    email = "";
   };
 }
 ```
@@ -50,6 +50,9 @@ ln -snfF ~/dotfiles/iterm2-profiles.json ~/Library/Application\ Support/iTerm2/D
 # add home-manager
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
+
+# install home-manager
+nix-shell '<home-manager>' -A install
 
 # Apply config in linux
 home-manager switch -f profiles/linux-XXXX.nix

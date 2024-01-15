@@ -15,6 +15,7 @@ in
       ".DS_Store" ".DS_Store?" ".Spotlight-V100" ".Trashes" "ehthumbs.db" "Thumbs.db"
       ".$*" # drawio temp files
       ".idea" ".notes"
+      ".direnv/"
     ];
     extraConfig = {
       push.autoSetupRemote = true;

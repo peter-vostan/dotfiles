@@ -9,6 +9,10 @@ Nix Darwin Docs: <https://daiderd.com/nix-darwin/manual/index.html>
 ```sh
 # install nix
 sh <(curl -L https://nixos.org/nix/install) --daemon
+
+# add nixpkgs-unstable channel
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
+nix-channel --update
 ```
 
 Create a `settings.local.nix` file with the following content (update the placeholders)

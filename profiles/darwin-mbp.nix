@@ -21,9 +21,8 @@
 
   homebrew = {
     enable = true;
-    taps = [
-      "homebrew/cask"
-    ];
+    global.brewfile = true;
+    taps = [];
     brews = [
       "ansible"
       "awscli"

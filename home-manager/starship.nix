@@ -12,6 +12,7 @@
       hostname.ssh_only = true;
       hostname.format = "[\[$hostname\]]($style) "; # Looks better without the symbol
       package.disabled = true; # Package version is rarely useful
+      nix_shell.format = "via [$symbol$name]($style) "; # remove pure/impure
     };
   };
 }

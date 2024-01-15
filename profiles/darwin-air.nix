@@ -8,6 +8,8 @@
   environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [];
 
+  security.pam.enableSudoTouchIdAuth = true;
+
   users.users.peter = {
     name = "peter";
     home = "/Users/peter";
@@ -21,18 +23,9 @@
 
   homebrew = {
     enable = true;
-    taps = [
-      "azure/functions"
-      "homebrew/cask"
-      "stripe/stripe-cli"
-    ];
-    brews = [
-      "awscli"
-      "azure-cli"
-      "azure-functions-core-tools@4"
-      "stripe"
-      "terraform"
-    ];
+    global.brewfile = true;
+    taps = [];
+    brews = [];
     casks = [
       "android-studio"
       "crystalfetch"        # UI for creating Windows installer ISO from UUPDump

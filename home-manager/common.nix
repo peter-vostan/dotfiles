@@ -21,10 +21,21 @@
 
   programs.bat.enable = true;
   programs.bat.config.theme = "ansi";
+
   programs.broot.enable = true;
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-  programs.lsd.enable = true;
-  programs.lsd.enableAliases = true;
-  programs.lsd.settings.date = "relative";
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    config = builtins.fromTOML ''
+      [global]
+      load_dotenv = true
+    '';
+  };
+
+  programs.lsd = {
+    enable = true;
+    enableAliases = true;
+    settings.date = "relative";
+  };
 }

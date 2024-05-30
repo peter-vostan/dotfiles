@@ -10,6 +10,7 @@ in
     userEmail = settings.git.user.email;
     aliases = {
       "prune-branches" = "!bash -c \"source $HOME/.functions && git-prune-branches\"";
+      "exclude" = "!$EDITOR .git/info/exclude";
     };
     ignores = [
       ".DS_Store" ".DS_Store?" ".Spotlight-V100" ".Trashes" "ehthumbs.db" "Thumbs.db"

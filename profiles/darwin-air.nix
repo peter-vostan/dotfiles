@@ -6,7 +6,7 @@
   system.stateVersion = 4; # Used for backwards compatibility, please read the changelog before changing. ($ darwin-rebuild changelog)
 
   environment.pathsToLink = [ "/share/zsh" ];
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -24,11 +24,11 @@
   homebrew = {
     enable = true;
     global.brewfile = true;
-    taps = [];
-    brews = [];
+    taps = [ ];
+    brews = [ ];
     casks = [
       "android-studio"
-      "crystalfetch"        # UI for creating Windows installer ISO from UUPDump
+      "crystalfetch" # UI for creating Windows installer ISO from UUPDump
       "drawio"
       "firefox"
       "google-chrome"
@@ -40,7 +40,6 @@
       "stremio"
       "utm"
       "visual-studio-code"
-      "vpn-by-google-one"
     ];
   };
 }

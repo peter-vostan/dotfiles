@@ -14,9 +14,25 @@
   home.file.".functions".source = ../functions;
 
   home.packages = with pkgs; [
+    nixpkgs-fmt
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    bottom curl fd ffmpeg git gum htop jq socat websocat
-    fnm mkcert poetry
+
+    # Terminal Related
+    bottom
+    curl
+    fd
+    ffmpeg
+    git
+    gum
+    htop
+    jq
+    socat
+    websocat
+
+    # Development Related
+    fnm
+    mkcert
+    poetry
   ];
 
   programs.bat.enable = true;

@@ -13,9 +13,15 @@ in
       "exclude" = "!$EDITOR .git/info/exclude";
     };
     ignores = [
-      ".DS_Store" ".DS_Store?" ".Spotlight-V100" ".Trashes" "ehthumbs.db" "Thumbs.db"
+      ".DS_Store"
+      ".DS_Store?"
+      ".Spotlight-V100"
+      ".Trashes"
+      "ehthumbs.db"
+      "Thumbs.db"
       ".$*" # drawio temp files
-      ".idea" ".notes"
+      ".idea"
+      ".notes"
       ".direnv/"
     ];
     extraConfig = {

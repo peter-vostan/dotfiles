@@ -6,7 +6,7 @@
   system.stateVersion = 4; # Used for backwards compatibility, please read the changelog before changing. ($ darwin-rebuild changelog)
 
   environment.pathsToLink = [ "/share/zsh" ];
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [ ];
 
   users.users.peter = {
     name = "peter";
@@ -22,7 +22,7 @@
   homebrew = {
     enable = true;
     global.brewfile = true;
-    taps = [];
+    taps = [ ];
     brews = [
       "ansible"
       "awscli"

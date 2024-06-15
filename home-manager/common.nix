@@ -14,25 +14,10 @@
   home.file.".functions".source = ../functions;
 
   home.packages = with pkgs; [
-    nixpkgs-fmt
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
-    # Terminal Related
-    bottom
-    curl
-    fd
-    ffmpeg
-    git
-    gum
-    htop
-    jq
-    socat
-    websocat
-
-    # Development Related
-    fnm
-    mkcert
-    poetry
+    nixpkgs-fmt
+    gum # used in shell functions
   ];
 
   programs.bat.enable = true;
@@ -49,9 +34,15 @@
     '';
   };
 
+  programs.fd.enable = true;
+
+  programs.jq.enable = true;
+
   programs.lsd = {
     enable = true;
     enableAliases = true;
     settings.date = "relative";
   };
+
+  programs.ripgrep.enable = true;
 }

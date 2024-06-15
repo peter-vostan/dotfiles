@@ -34,6 +34,16 @@
         };
       }
       {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = pkgs.fetchFromGitHub {
+          owner = "chisui";
+          repo = "zsh-nix-shell";
+          rev = "v0.8.0";
+          sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+        };
+      }
+      {
         name = "zsh-syntax-highlighting";
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
@@ -54,6 +64,9 @@
       bindkey "\e[1;5D" backward-word
       bindkey "\e[H" beginning-of-line
       bindkey "\e[F" end-of-line
+
+      # ⌥+C binding for iterm2
+      bindkey "ç" fzf-cd-widget
 
       zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
       zstyle ':completion:*:descriptions' format '[%d]'

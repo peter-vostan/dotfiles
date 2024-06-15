@@ -2,6 +2,19 @@
 
 mkd () { mkdir -p "$@" && cd "$_" || exit; }
 
+rg-fzf-code () {
+  RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+  fzf < /dev/null \
+      --disabled --ansi --multi \
+      --bind "start:$RELOAD" --bind "change:$RELOAD" \
+      --bind "enter:execute:code -g {1}:{2}:{3}" \
+      --delimiter : \
+      --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+      --preview-window '~4,+{2}+4/3,<80(up)' \
+      --query "$*"
+}
+alias rgf=rg-fzf-code
+
 git-prune-branches () {
   local branches
   gum spin --spinner points --title "Fetching..." -- git fetch --prune --tags

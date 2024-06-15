@@ -54,7 +54,6 @@
       }
     ];
     profileExtra = ''
-      eval "$(fnm env --use-on-cd)"
       [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
     initExtra = ''

@@ -27,8 +27,6 @@
     taps = [ ];
     brews = [ ];
     casks = [
-      "android-studio"
-      "crystalfetch" # UI for creating Windows installer ISO from UUPDump
       "drawio"
       "firefox"
       "google-chrome"
@@ -36,7 +34,7 @@
       "microsoft-edge"
       "microsoft-teams"
       "messenger"
-      "rectangle"
+      "rectangle" # TODO: remove once native support for window snapping is available 
       "stremio"
       "utm"
       "visual-studio-code"

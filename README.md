@@ -75,3 +75,16 @@ If using a virtual machine on a macbook, use kinto.sh to setup better keyboard c
 # Not compatible with Wayland
 # May need to disable default keybindings in virtualization software like Parallels
 ```
+
+## Extra Packages
+
+Some other usefull packages to use as needed
+
+Brew
+
+- `brew install --cask android-studio`
+- `brew install --cask crystalfetch` UI for creating Windows installer ISO from UUPDump
+
+Nix
+
+-

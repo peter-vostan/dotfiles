@@ -39,5 +39,11 @@
       "utm"
       "visual-studio-code"
     ];
+    # Mac App Store https://github.com/mas-cli/mas
+    # $ mas search <app name>
+    masApps = {
+      "adguard-for-safari" = 1440147259;
+      "bitwarden" = 1352778147;
+    };
   };
 }

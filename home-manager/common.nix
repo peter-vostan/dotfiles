@@ -18,6 +18,7 @@
 
     nixpkgs-fmt
     gum # used in shell functions
+    jnv # json viewer and interactive jq filter editor
   ];
 
   programs.bat.enable = true;

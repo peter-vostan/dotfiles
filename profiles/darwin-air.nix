@@ -10,6 +10,8 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
+  networking.hostName = "peters-macbook-air";
+
   users.users.peter = {
     name = "peter";
     home = "/Users/peter";

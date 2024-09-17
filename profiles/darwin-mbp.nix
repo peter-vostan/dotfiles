@@ -37,7 +37,6 @@
       "iterm2"
       "microsoft-edge"
       "microsoft-teams"
-      "rectangle"
       "visual-studio-code"
     ];
   };

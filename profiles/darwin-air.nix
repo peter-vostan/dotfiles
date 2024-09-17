@@ -44,10 +44,9 @@
       "microsoft-edge"
       "microsoft-teams"
       "messenger"
-      "rectangle" # TODO: remove once native support for window snapping is available 
       "stremio"
       "utm"
-      "visual-studio-code"
+      "visual-studio-code" # switch to zed once it has better git features and is added to home-manager 
     ];
     # Mac App Store https://github.com/mas-cli/mas
     # $ mas search <app name>

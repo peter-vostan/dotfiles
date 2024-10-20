@@ -17,6 +17,8 @@
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
     nixpkgs-fmt
+    nixd # nix language server 
+
     gum # used in shell functions
     jnv # json viewer and interactive jq filter editor
   ];

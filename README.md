@@ -42,10 +42,6 @@ nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 
 # Apply config in MacOS
 darwin-rebuild switch -I darwin-config=profiles/darwin-XXXX.nix
-
-# Add iterm2 profile to the DynamicProfiles directory (if not already done)
-mkdir -p ~/Library/Application\ Support/iTerm2/DynamicProfiles
-ln -snfF ~/dotfiles/iterm2-profiles.json ~/Library/Application\ Support/iTerm2/DynamicProfiles/custom.json
 ```
 
 ### Linux

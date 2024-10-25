@@ -40,13 +40,13 @@
       "drawio"
       "firefox"
       "google-chrome"
-      "iterm2"
       "microsoft-edge"
       "microsoft-teams"
       "messenger"
       "stremio"
       "utm"
-      "visual-studio-code" # switch to zed once it has better git features and is added to home-manager 
+      "visual-studio-code"
+      "zed"
     ];
     # Mac App Store https://github.com/mas-cli/mas
     # $ mas search <app name>

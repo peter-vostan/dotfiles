@@ -34,10 +34,10 @@
     casks = [
       "docker"
       "drawio"
-      "iterm2"
       "microsoft-edge"
       "microsoft-teams"
       "visual-studio-code"
+      "zed"
     ];
   };
 }

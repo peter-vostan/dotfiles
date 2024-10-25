@@ -2,11 +2,13 @@
 
 {
   imports = [
+    ./alacritty.nix
     ./aliases.nix
     ./fzf.nix
     ./git.nix
     ./navi.nix
     ./starship.nix
+    ./tmux.nix
     ./variables.nix
     ./zsh.nix
   ];

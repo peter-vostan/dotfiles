@@ -59,10 +59,8 @@
     initExtra = ''
       . ~/.functions
 
-      bindkey "\e[1;5C" forward-word
-      bindkey "\e[1;5D" backward-word
-      bindkey "\e[H" beginning-of-line
-      bindkey "\e[F" end-of-line
+      bindkey "\e[1;9C" end-of-line
+      bindkey "\e[1;9D" beginning-of-line
 
       # ⌥+C binding for iterm2
       bindkey "ç" fzf-cd-widget

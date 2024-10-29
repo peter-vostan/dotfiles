@@ -21,6 +21,7 @@
       ];
       window.opacity = 0.95;
       window.padding = { x = 4; y = 4; };
+      window.decorations_theme_variant = "Dark";
     };
   };
 }

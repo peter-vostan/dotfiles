@@ -52,6 +52,15 @@
           sha256 = "sha256-gOG0NLlaJfotJfs+SUhGgLTNOnGLjoqnUp54V9aFJg8=";
         };
       }
+      {
+        name = "zsh-window-title";
+        src = pkgs.fetchFromGitHub {
+          owner = "olets";
+          repo = "zsh-window-title";
+          rev = "v1.2.0";
+          sha256 = "sha256-RqJmb+XYK35o+FjUyqGZHD6r1Ku1lmckX41aXtVIUJQ=";
+        };
+      }
     ];
     profileExtra = ''
       [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"

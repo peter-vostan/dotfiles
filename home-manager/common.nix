@@ -13,6 +13,8 @@
     ./zsh.nix
   ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   home.file.".functions".source = ../functions;
 
   home.packages = with pkgs; [

@@ -72,7 +72,13 @@ If using a virtual machine on a macbook, use kinto.sh to setup better keyboard c
 # May need to disable default keybindings in virtualization software like Parallels
 ```
 
-## Extra Packages
+## Other
+
+To get the hash details for a package, you can use a command like this
+
+```sh
+nix run nixpkgs#nix-prefetch-github -- {owner} {repo}
+```
 
 Some other usefull packages to use as needed
 

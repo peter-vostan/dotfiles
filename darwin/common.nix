@@ -8,7 +8,8 @@
 
   services.nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
 
-  programs.zsh.enable = true;
+  programs.zsh.enable = true; 
+  
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 }

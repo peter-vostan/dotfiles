@@ -5,13 +5,14 @@
 
   system.stateVersion = 4; # Used for backwards compatibility, please read the changelog before changing. ($ darwin-rebuild changelog)
 
-  environment.pathsToLink = [ "/share/zsh" ];
   environment.systemPackages = with pkgs; [ ];
+  environment.pathsToLink = [
+    "/share/zsh" # Needed for zsh completion of system commands
+  ];
 
   security.pam.enableSudoTouchIdAuth = true;
 
   networking.hostName = "peters-macbook-air";
-
   networking.knownNetworkServices = [ "Wi-Fi" ];
   networking.dns = [
     "1.1.1.1"
@@ -26,9 +27,19 @@
     shell = pkgs.zsh;
   };
 
-  home-manager.users.peter = { pkgs, ... }: {
+  home-manager.users.peter = { pkgs, lib, ... }: {
     imports = [ ../home-manager/common.nix ];
     home.stateVersion = "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
+
+    # Spotlight does not index apps which are symlinked / aliased so we need to copy the .app instead
+    home.activation.alacritty = lib.hm.dag.entryAfter [ "writeBoundry" ] ''
+      $DRY_RUN_CMD [ -e ~/Applications/Alacritty.app ] && rm -rf ~/Applications/Alacritty.app
+      $DRY_RUN_CMD cp -r ${pkgs.alacritty}/Applications/Alacritty.app/ ~/Applications
+      $DRY_RUN_CMD chmod -R 755 ~/Applications/Alacritty.app
+      
+      # Fix up the relative symlink
+      $DRY_RUN_CMD ln -sf ${pkgs.alacritty}/bin ~/Applications/Alacritty.app/Contents/MacOS
+    '';
   };
 
   homebrew = {

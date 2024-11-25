@@ -6,6 +6,8 @@
     ../home-manager/gnome-terminal.nix
   ];
 
+  nix.package = pkgs.nix;
+
   home.username = "parallels";
   home.homeDirectory = "/home/parallels";
 

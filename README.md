@@ -11,7 +11,7 @@ Nix Darwin Docs: <https://daiderd.com/nix-darwin/manual/index.html>
 sh <(curl -L https://nixos.org/nix/install) --daemon
 
 # add nixpkgs-unstable channel
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
 nix-channel --update
 ```
 

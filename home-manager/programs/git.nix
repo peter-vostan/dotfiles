@@ -1,13 +1,10 @@
 { config, pkgs, ... }:
 
-let
-  settings = (import ../settings.local.nix);
-in
 {
   programs.git = {
     enable = true;
-    userName = settings.git.user.name;
-    userEmail = settings.git.user.email;
+    # userName = "";
+    # userEmail = "";
     aliases = {
       "prune-branches" = "!bash -c \"source $HOME/.functions && git-prune-branches\"";
       "exclude" = "!$EDITOR .git/info/exclude";

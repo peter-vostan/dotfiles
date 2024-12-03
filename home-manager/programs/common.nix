@@ -9,16 +9,13 @@
     ./navi.nix
     ./starship.nix
     ./tmux.nix
-    ./variables.nix
     ./zsh.nix
   ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  home.file.".functions".source = ../functions;
+  home.file.".functions".source = ../../functions;
 
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    nerd-fonts.jetbrains-mono
 
     nixpkgs-fmt
     nixd # nix language server 
@@ -26,6 +23,14 @@
     gum # used in shell functions
     jnv # json viewer and interactive jq filter editor
   ];
+
+  home.sessionVariables = {
+    EDITOR = "nano";
+    VISUAL = "nano";
+    LESS = "iRFM";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p --paging=never'";
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=240";
+  };
 
   programs.bat.enable = true;
   programs.bat.config.theme = "ansi";

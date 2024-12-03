@@ -1,6 +1,18 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
+  nix.settings.experimental-features = "nix-command flakes";
+
+  services.nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
+
+  programs.zsh.enable = true;
+  environment.pathsToLink = [
+    "/share/zsh" # Needed for zsh completion of system commands
+  ];
+
   # https://github.com/LnL7/nix-darwin/tree/master/modules/system/defaults
   system.defaults = {
     CustomUserPreferences = {

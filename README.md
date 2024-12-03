@@ -7,86 +7,82 @@ Nix Darwin Docs: <https://daiderd.com/nix-darwin/manual/index.html>
 ## Installation
 
 ```sh
-# install nix
+# Install nix
 sh <(curl -L https://nixos.org/nix/install) --daemon
 
-# add nixpkgs-unstable channel
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
-nix-channel --update
-```
-
-Create a `settings.local.nix` file with the following content (update the placeholders)
-
-```nix
-{
-  git.user = {
-    name = "";
-    email = "";
-  };
-}
+# Enable nix-command and flakes
+echo "experimental-features = nix-command flakes" | sudo tee --append /etc/nix/nix.conf
 ```
 
 ### MacOS
 
 ```sh
-# Install homebrew
+# Install homebrew (if not already installed) (https://brew.sh/)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# add home-manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-
-# add nix-darwin
-nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
-./result/bin/darwin-installer # N to editing the default config, Y to managing darwin with nix-channel
-
 # Apply config in MacOS
-darwin-rebuild switch -I darwin-config=profiles/darwin-XXXX.nix
+nix run nix-darwin -- switch --flake .
 ```
 
-### Linux
+### Linux (without NixOS)
 
 ```sh
-# add home-manager
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-
-# install home-manager
-nix-shell '<home-manager>' -A install
-
-# Apply config in linux
-home-manager switch -f profiles/linux-XXXX.nix
+# Apply config in Linux
+nix run home-manager -- switch --flake .
 
 # Update login shell (if required)
 zsh
 echo "$(which zsh)" | sudo tee -a /etc/shells
 chsh -s "$(which zsh)"
-logout
+
+reboot
 ```
 
-If using a virtual machine on a macbook, use kinto.sh to setup better keyboard compatibility
+### NixOS
 
-```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rbreaves/kinto/HEAD/install/linux.sh)"
-# Not compatible with Wayland
-# May need to disable default keybindings in virtualization software like Parallels
-```
+TODO: Add config / details
 
 ## Other
+
+### Updating
+
+To update the flake input refs (eg. bring in updates from nixpkgs-unstable)
+
+```sh
+nix flake update
+```
+
+### Git Config
+
+To avoid having to hardcode personal details in these nix files, set git name and email local to each repo
+
+```sh
+git config user.name ""
+git config user.email ""
+```
+
+### Dev shell templates
+
+```sh
+# https://github.com/NixOS/templates
+nix flake init --template templates#full
+
+# https://github.com/nix-community/templates
+nix flake init --template github:nix-community/templates#<template>
+
+# Use with direnv
+echo "use flake" >> .envrc
+direnv allow
+
+# Ignore in shared repository
+echo ".envrc" >> .git/info/exclude
+echo "flake.nix" >> .git/info/exclude
+```
+
+### Package Hash Details
 
 To get the hash details for a package, you can use a command like this
 
 ```sh
 nix run nixpkgs#nix-prefetch-github -- {owner} {repo}
 ```
-
-Some other usefull packages to use as needed
-
-Brew
-
-- `brew install --cask android-studio`
-- `brew install --cask crystalfetch` UI for creating Windows installer ISO from UUPDump
-
-Nix
-
--

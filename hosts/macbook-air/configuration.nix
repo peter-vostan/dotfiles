@@ -32,6 +32,7 @@
       "microsoft-edge"
       "microsoft-teams"
       "messenger"
+      "netspot"
       "stremio"
       "utm"
       "visual-studio-code"

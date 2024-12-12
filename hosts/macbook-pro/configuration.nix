@@ -27,6 +27,7 @@
       "nomad"
       "packer"
       "terraform"
+      "uv" # Fast Python package and project manager, written in Rust
     ];
     casks = [
       "docker"

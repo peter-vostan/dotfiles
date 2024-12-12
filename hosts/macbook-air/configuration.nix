@@ -24,7 +24,9 @@
     enable = true;
     global.brewfile = true;
     taps = [ ];
-    brews = [ ];
+    brews = [
+      "uv" # Fast Python package and project manager, written in Rust
+    ];
     casks = [
       "drawio"
       "firefox"

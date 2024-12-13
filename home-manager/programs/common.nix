@@ -17,6 +17,8 @@
   home.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
 
+    git-crypt
+
     nixpkgs-fmt
     nixd # nix language server 
 

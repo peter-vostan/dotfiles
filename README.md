@@ -12,6 +12,12 @@ sh <(curl -L https://nixos.org/nix/install) --daemon
 
 # Enable nix-command and flakes
 echo "experimental-features = nix-command flakes" | sudo tee --append /etc/nix/nix.conf
+
+# Copy the base64 encoded symmetric key for git-crypt and decode into ./secret-key file
+pbpaste | base64 --decode > ./secret-key
+
+# Decrypt secrets
+nix run nixpkgs#git-crypt -- unlock ./secret-key
 ```
 
 ### MacOS
@@ -50,15 +56,6 @@ To update the flake input refs (eg. bring in updates from nixpkgs-unstable)
 
 ```sh
 nix flake update
-```
-
-### Git Config
-
-To avoid having to hardcode personal details in these nix files, set git name and email local to each repo
-
-```sh
-git config user.name ""
-git config user.email ""
 ```
 
 ### Dev shell templates

@@ -13,11 +13,14 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs }:
-    {
+  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
+    let
+      secrets = builtins.fromJSON (builtins.readFile "${self}/secrets.json");
+    in {
       # $ darwin-rebuild switch --flake .
       darwinConfigurations = {
         "Peters-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit secrets; };
           system = "aarch64-darwin";
           modules = [
             home-manager.darwinModules.default
@@ -25,6 +28,7 @@
           ];
         };
         "peters-macbook-air" = nix-darwin.lib.darwinSystem {
+          specialArgs = { inherit secrets; };
           system = "aarch64-darwin";
           modules = [
             home-manager.darwinModules.default

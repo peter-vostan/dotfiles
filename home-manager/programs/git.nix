@@ -3,8 +3,6 @@
 {
   programs.git = {
     enable = true;
-    # userName = "";
-    # userEmail = "";
     aliases = {
       "prune-branches" = "!bash -c \"source $HOME/.functions && git-prune-branches\"";
       "exclude" = "!$EDITOR .git/info/exclude";

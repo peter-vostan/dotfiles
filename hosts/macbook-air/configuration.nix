@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, secrets, ... }:
 
 {
   imports = [ ../darwin.nix ];
@@ -18,6 +18,9 @@
   home-manager.users.peter = { ... }: {
     imports = [ ../../home-manager/programs/common.nix ];
     home.stateVersion = "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
+
+    programs.git.userName = secrets.github.name;
+    programs.git.userEmail = secrets.github.email.personal;
   };
 
   homebrew = {

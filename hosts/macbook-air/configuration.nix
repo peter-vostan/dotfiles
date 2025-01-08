@@ -31,6 +31,7 @@
       "uv" # Fast Python package and project manager, written in Rust
     ];
     casks = [
+      "balenaetcher"
       "drawio"
       "firefox"
       "google-chrome"

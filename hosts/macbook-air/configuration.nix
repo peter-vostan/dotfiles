@@ -3,7 +3,8 @@
 {
   imports = [ ../darwin.nix ];
 
-  system.stateVersion = 4; # Used for backwards compatibility, please read the changelog before changing. ($ darwin-rebuild changelog)
+  system.stateVersion =
+    4; # Used for backwards compatibility, please read the changelog before changing. ($ darwin-rebuild changelog)
 
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -17,7 +18,8 @@
 
   home-manager.users.peter = { ... }: {
     imports = [ ../../home-manager/programs/common.nix ];
-    home.stateVersion = "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
+    home.stateVersion =
+      "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
 
     programs.git.userName = secrets.github.name;
     programs.git.userEmail = secrets.github.email.personal;
@@ -42,6 +44,7 @@
       "stremio"
       "utm"
       "visual-studio-code"
+      "vmware-fusion"
       "zed"
     ];
     # Mac App Store https://github.com/mas-cli/mas

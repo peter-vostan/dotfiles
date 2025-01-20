@@ -19,8 +19,8 @@
 
     git-crypt
 
-    nixpkgs-fmt
-    nixd # nix language server 
+    nixfmt
+    nixd # nix language server
 
     gum # used in shell functions
     jnv # json viewer and interactive jq filter editor
@@ -29,8 +29,8 @@
   home.sessionVariables = {
     EDITOR = "nano";
     VISUAL = "nano";
-    LESS = "iRFM";
-    MANPAGER = "sh -c 'col -bx | bat -l man -p --paging=never'";
+    LESS =
+      "iRFM"; # -i ignore case in searches that lack uppercase, -R display control chars, -F exit if less than 1 screen, -M prompt very verbosely
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE = "fg=240";
   };
 

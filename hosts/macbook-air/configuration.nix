@@ -33,19 +33,32 @@
       "uv" # Fast Python package and project manager, written in Rust
     ];
     casks = [
-      "balenaetcher"
-      "drawio"
+      # Browsers
       "firefox"
       "google-chrome"
       "microsoft-edge"
+
+      # Communication
       "microsoft-teams"
       "messenger"
-      "netspot"
-      "stremio"
-      "utm"
+
+      # IDE's
       "visual-studio-code"
+      # "zed"
+
+      # Media
+      "stremio"
+
+      # Utilities
+      "balenaetcher"
+      "drawio"
+      "netspot"
+      "raspberry-pi-imager"
+
+      # Virtualisation
+      # "parallels" # Requires the terminal to have full disk access
+      # "utm"
       "vmware-fusion"
-      "zed"
     ];
     # Mac App Store https://github.com/mas-cli/mas
     # $ mas search <app name>

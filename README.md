@@ -58,6 +58,16 @@ To update the flake input refs (eg. bring in updates from nixpkgs-unstable)
 nix flake update
 ```
 
+### Nix Store Cleanup
+
+```sh
+# Optimize store by hard simlinking duplicates etc.
+nix-store --optimise
+
+# Delete unused derivations
+nix-store --gc
+```
+
 ### Dev shell templates
 
 ```sh

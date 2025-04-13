@@ -6,8 +6,6 @@
 
   nix.settings.experimental-features = "nix-command flakes";
 
-  services.nix-daemon.enable = true; # Auto upgrade nix package and the daemon service.
-
   programs.zsh.enable = true;
   environment.pathsToLink = [
     "/share/zsh" # Needed for zsh completion of system commands
@@ -24,7 +22,8 @@
 
     dock = {
       mineffect = "scale";
-      minimize-to-application = true; # Minimize windows into their application's icon, might need to be manually applied if this isn't working
+      minimize-to-application =
+        true; # Minimize windows into their application's icon, might need to be manually applied if this isn't working
       tilesize = 36;
       show-recents = false;
       autohide = true;
@@ -47,7 +46,8 @@
     screencapture.type = "jpg";
 
     trackpad = {
-      Clicking = true; # Enable tap to click, might need to be manually applied if this isn't working
+      Clicking =
+        true; # Enable tap to click, might need to be manually applied if this isn't working
       # Manually turn "Look up and Data Detectors" off in System Preferences > Trackpad > Point & Click
     };
 

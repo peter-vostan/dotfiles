@@ -6,7 +6,7 @@
   system.stateVersion =
     4; # Used for backwards compatibility, please read the changelog before changing. ($ darwin-rebuild changelog)
 
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   networking.hostName = "peters-macbook-air";
 
@@ -44,7 +44,7 @@
 
       # IDE's
       "visual-studio-code"
-      # "zed"
+      "zed@preview"
 
       # Media
       "stremio"

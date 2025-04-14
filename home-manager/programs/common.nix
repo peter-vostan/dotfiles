@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -20,7 +20,8 @@
     git-crypt
 
     nixfmt
-    nixd # nix language server
+    nixd # Feature-rich Nix language server interoperating with C++ nix
+    nil # Yet another language server for Nix
 
     gum # used in shell functions
     jnv # json viewer and interactive jq filter editor

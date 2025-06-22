@@ -54,6 +54,7 @@
       "drawio"
       "netspot"
       "raspberry-pi-imager"
+      "stats"
 
       # Virtualisation
       # "parallels" # Requires the terminal to have full disk access
@@ -63,7 +64,7 @@
     # Mac App Store https://github.com/mas-cli/mas
     # $ mas search <app name>
     masApps = {
-      "adguard-for-safari" = 1440147259;
+      # "adguard-for-safari" = 1440147259;
       "bitwarden" = 1352778147;
     };
   };

@@ -14,19 +14,10 @@
   };
 
   outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
-    let
-      secrets = builtins.fromJSON (builtins.readFile "${self}/secrets.json");
+    let secrets = builtins.fromJSON (builtins.readFile "${self}/secrets.json");
     in {
       # $ darwin-rebuild switch --flake .
       darwinConfigurations = {
-        "Peters-MacBook-Pro" = nix-darwin.lib.darwinSystem {
-          specialArgs = { inherit secrets; };
-          system = "aarch64-darwin";
-          modules = [
-            home-manager.darwinModules.default
-            ./hosts/macbook-pro/configuration.nix
-          ];
-        };
         "peters-macbook-air" = nix-darwin.lib.darwinSystem {
           specialArgs = { inherit secrets; };
           system = "aarch64-darwin";
@@ -52,7 +43,8 @@
               home = {
                 username = "peter";
                 homeDirectory = "/home/peter";
-                stateVersion = "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
+                stateVersion =
+                  "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
               };
             }
           ];

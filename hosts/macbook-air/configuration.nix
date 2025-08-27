@@ -10,6 +10,7 @@
 
   networking.hostName = "peters-macbook-air";
 
+  system.primaryUser = "peter";
   users.users.peter = {
     name = "peter";
     home = "/Users/peter";
@@ -31,6 +32,7 @@
     taps = [ ];
     brews = [
       "uv" # Fast Python package and project manager, written in Rust
+      "gemini-cli"
     ];
     casks = [
       # Browsers
@@ -44,7 +46,7 @@
 
       # IDE's
       "visual-studio-code"
-      "zed@preview"
+      "zed"
 
       # Media
       "stremio"

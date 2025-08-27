@@ -65,7 +65,7 @@
     profileExtra = ''
       [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
-    initExtra = ''
+    initContent = ''
       . ~/.functions
 
       bindkey "\e[1;9C" end-of-line

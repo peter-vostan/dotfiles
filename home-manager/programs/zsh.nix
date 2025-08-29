@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.zsh = {
@@ -65,8 +65,16 @@
     profileExtra = ''
       [ -f /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
-    initContent = ''
+    # lib.mkOrder 1200 forces this to be loaded after other default initContent which is 1000
+    initContent = lib.mkOrder 1200 ''
       . ~/.functions
+
+      # Rebind navi to Ctrl-H so that fzf-git-sh can use Ctrl-G
+      bindkey -r '^G'
+      bindkey '^H' _navi_widget
+
+      # Source fzf-git.sh for Git fuzzy bindings (e.g., Ctrl-G Ctrl-B for branches).
+      source ${pkgs.fzf-git-sh}/share/fzf-git-sh/fzf-git.sh
 
       bindkey "\e[1;9C" end-of-line
       bindkey "\e[1;9D" beginning-of-line

@@ -27,7 +27,7 @@ nix run nixpkgs#git-crypt -- unlock ./secret-key
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Apply config in MacOS
-nix run nix-darwin -- switch --flake .
+sudo nix run nix-darwin -- switch --flake .
 ```
 
 ### Linux (without NixOS)

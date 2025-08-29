@@ -13,9 +13,17 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, nix-darwin, home-manager }:
-    let secrets = builtins.fromJSON (builtins.readFile "${self}/secrets.json");
-    in {
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      nix-darwin,
+      home-manager,
+    }:
+    let
+      secrets = builtins.fromJSON (builtins.readFile "${self}/secrets.json");
+    in
+    {
       # $ darwin-rebuild switch --flake .
       darwinConfigurations = {
         "peters-macbook-air" = nix-darwin.lib.darwinSystem {
@@ -43,8 +51,7 @@
               home = {
                 username = "peter";
                 homeDirectory = "/home/peter";
-                stateVersion =
-                  "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
+                stateVersion = "23.11"; # Be careful changing this. Check Home Manager release notes thoroughly first
               };
             }
           ];
